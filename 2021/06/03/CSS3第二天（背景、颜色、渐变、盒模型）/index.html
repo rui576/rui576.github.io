@@ -20,21 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="HTML5新特性   -增加了audio与video音频播放，抛弃了Flash    -新增了canvas画布（绘画，制作动画、如小游戏开发等）    -地理定位    -增加了离线缓存    -硬件加速    -Web Socket（全双工通信）    -增加本地存储    -新增一些语义化标签">
+  <meta name="description" content="CSS3背景 -1.多重背景   语法：background：背景色（1） 背景图片（1） 平铺方式（1） 位置（1），背景色（2）…..">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5（初识）">
-<meta property="og:url" content="http://example.com/2021/06/02/HTML5%EF%BC%88%E5%88%9D%E8%AF%86%EF%BC%89/index.html">
+<meta property="og:title" content="CSS3第二天（背景、颜色、渐变、盒模型）">
+<meta property="og:url" content="http://example.com/2021/06/03/CSS3%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E8%83%8C%E6%99%AF%E3%80%81%E9%A2%9C%E8%89%B2%E3%80%81%E6%B8%90%E5%8F%98%E3%80%81%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%89/index.html">
 <meta property="og:site_name" content="rui的个人博客">
-<meta property="og:description" content="HTML5新特性   -增加了audio与video音频播放，抛弃了Flash    -新增了canvas画布（绘画，制作动画、如小游戏开发等）    -地理定位    -增加了离线缓存    -硬件加速    -Web Socket（全双工通信）    -增加本地存储    -新增一些语义化标签">
+<meta property="og:description" content="CSS3背景 -1.多重背景   语法：background：背景色（1） 背景图片（1） 平铺方式（1） 位置（1），背景色（2）…..">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.imagehub.cc/images/2021/06/02/050a3552f6f4334305.png">
-<meta property="article:published_time" content="2021-06-02T11:23:49.000Z">
-<meta property="article:modified_time" content="2021-06-02T11:36:54.674Z">
+<meta property="article:published_time" content="2021-06-03T12:48:43.000Z">
+<meta property="article:modified_time" content="2021-06-03T12:50:18.173Z">
 <meta property="article:author" content="rui576">
+<meta property="article:tag" content="背景 颜色 渐变 盒模型">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.imagehub.cc/images/2021/06/02/050a3552f6f4334305.png">
 
-<link rel="canonical" href="http://example.com/2021/06/02/HTML5%EF%BC%88%E5%88%9D%E8%AF%86%EF%BC%89/">
+<link rel="canonical" href="http://example.com/2021/06/03/CSS3%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E8%83%8C%E6%99%AF%E3%80%81%E9%A2%9C%E8%89%B2%E3%80%81%E6%B8%90%E5%8F%98%E3%80%81%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -47,7 +46,7 @@
   };
 </script>
 
-  <title>HTML5（初识） | rui的个人博客</title>
+  <title>CSS3第二天（背景、颜色、渐变、盒模型） | rui的个人博客</title>
   
 
 
@@ -190,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/02/HTML5%EF%BC%88%E5%88%9D%E8%AF%86%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/03/CSS3%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E8%83%8C%E6%99%AF%E3%80%81%E9%A2%9C%E8%89%B2%E3%80%81%E6%B8%90%E5%8F%98%E3%80%81%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -203,7 +202,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          HTML5（初识）
+          CSS3第二天（背景、颜色、渐变、盒模型）
         </h1>
 
         <div class="post-meta">
@@ -214,16 +213,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-06-02 19:23:49 / 修改时间：19:36:54" itemprop="dateCreated datePublished" datetime="2021-06-02T19:23:49+08:00">2021-06-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index"><span itemprop="name">HTML5</span></a>
-                </span>
+              <time title="创建时间：2021-06-03 20:48:43 / 修改时间：20:50:18" itemprop="dateCreated datePublished" datetime="2021-06-03T20:48:43+08:00">2021-06-03</time>
             </span>
 
           
@@ -242,8 +232,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/06/02/HTML5%EF%BC%88%E5%88%9D%E8%AF%86%EF%BC%89/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/02/HTML5%EF%BC%88%E5%88%9D%E8%AF%86%EF%BC%89/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/06/03/CSS3%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E8%83%8C%E6%99%AF%E3%80%81%E9%A2%9C%E8%89%B2%E3%80%81%E6%B8%90%E5%8F%98%E3%80%81%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/03/CSS3%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E8%83%8C%E6%99%AF%E3%80%81%E9%A2%9C%E8%89%B2%E3%80%81%E6%B8%90%E5%8F%98%E3%80%81%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%89/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -258,31 +248,104 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h3><p>   -增加了audio与video音频播放，抛弃了Flash</p>
-<p>   -新增了canvas画布（绘画，制作动画、如小游戏开发等）</p>
-<p>   -地理定位</p>
-<p>   -增加了离线缓存</p>
-<p>   -硬件加速</p>
-<p>   -Web Socket（全双工通信）</p>
-<p>   -增加本地存储</p>
-<p>   -新增一些语义化标签</p>
+        <h3 id="CSS3背景"><a href="#CSS3背景" class="headerlink" title="CSS3背景"></a>CSS3背景</h3><p> -1.多重背景</p>
+<p>  语法：background：背景色（1） 背景图片（1） 平铺方式（1） 位置（1），背景色（2）…..</p>
 <span id="more"></span>
 
-<h3 id="网页布局标签"><a href="#网页布局标签" class="headerlink" title="网页布局标签"></a>网页布局标签</h3><p>   -header 页首</p>
-<p>   -nav 导航栏</p>
-<p>   -aside 侧边栏</p>
-<p>   -main 主体</p>
-<p>   -section 区块</p>
-<p>   -airicle 文章</p>
-<p>   -footer 页尾</p>
-<p><img src="https://s1.imagehub.cc/images/2021/06/02/050a3552f6f4334305.png" alt="050a3552f6f4334305.png"></p>
-<h3 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h3><p>   -mark 高亮显示</p>
-<p>   -summary（摘要）与detail（描述） 一般用于名词解释或用于封装一个区块</p>
-<p>   -meter 定义度量衡 </p>
-<p>​    -属性：value 当前值 | min{number}最小值 |max{number}最大值|low与high{number} 指范围的最大最小</p>
-<p>   -progress 进度条 与meter属性用法一致</p>
-<p>   -dialog 定义对话框或窗口</p>
-<p>   -figure 用于对元素组合 （一般用来组合图片标题、图片与图片描述等）</p>
+<p> -2.background-size 设定背景图像的尺寸</p>
+<p>  语法： background-size ：length | precentage | cover | contain </p>
+<p>  属性值：</p>
+<ul>
+<li>length：设置背景图像的高度和宽度，第一个值设置宽度，第二个设置高度，如果只设置一个值，那么第二个值会被设置为 auto</li>
+<li>percentage：以父元素的百分比来设置背景图像的高度和宽度，用法和length一样</li>
+<li>cover：把背景图像扩展至足够大，已使背景图像完全覆盖背景区域。背景图像的某部分也许无法显示在背景定位区域中。</li>
+<li>contain：把图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域</li>
+</ul>
+<p>-3.backgronnd-origin 属性指定了背景图像的位置区域</p>
+<p>  语法： background-origin ：padding-box（背景图像相对于内边框来定位） | border-box （相对于边框盒） | content-box （相对于内容框）</p>
+<p>-4.background-clip 设定背景的绘制区域</p>
+<p>  语法：background-clip：padding-box（背景图像相对于内边框来定位） | border-box （相对于边框盒） | content-box （相对于内容框）</p>
+<h3 id="CSS3颜色"><a href="#CSS3颜色" class="headerlink" title="CSS3颜色"></a>CSS3颜色</h3><p>-1.rgba（r，g，b，a）</p>
+<p>  属性值：</p>
+<ul>
+<li><p>r：红色 取值范围：0-255</p>
+</li>
+<li><p>g:  绿色 取值范围：0-255</p>
+</li>
+<li><p>b:  蓝色 取值范围：0-255</p>
+</li>
+<li><p>a:  不透明度  取值范围：0-1的一个小数</p>
+</li>
+<li><p>2.HSL （h，s，l）</p>
+<p>属性值：</p>
+</li>
+<li><p>  h：色调 取值范围：0-360</p>
+</li>
+<li><p>  s：饱和度 取值范围：0-360</p>
+</li>
+<li><p>   l：亮度 取值范围：0-100%</p>
+</li>
+<li><p>3.HSLA （h，s，l，a）</p>
+<p>属性值：</p>
+</li>
+<li><p>  h：色调 取值范围：0-360</p>
+</li>
+<li><p>  s：饱和度 取值范围：0-360</p>
+</li>
+<li><p>   l：亮度 取值范围：0-100%</p>
+</li>
+<li><p>   a：不透明度 取值范围：0-1的一个小数</p>
+</li>
+</ul>
+<p>-4.Opacity 设置元素的不透明级别 大多数请况下用于做元素的遮罩效果</p>
+<p>  语法： opacity：value | inherit</p>
+<p>  取值：</p>
+<ul>
+<li><p>value：规定不透明度。从0.0（完全透明）到1.0（完全不透明）。</p>
+</li>
+<li><p>inherit：从父元素继承opacity属性的值</p>
+<p>Tips：IE8及8以下的版本不支持opacity。兼容方式为：再添加一行代码来处理不兼容。</p>
+<p>  代码：filter：alpha（opacity = 数值）  数值的范围：0-100</p>
+</li>
+</ul>
+<h3 id="CSS3渐变"><a href="#CSS3渐变" class="headerlink" title="CSS3渐变"></a>CSS3渐变</h3><p>  主要用来设置背景或制作三维图</p>
+<p>  -1.线性渐变</p>
+<p>  语法： background：linear-gradient（direction（方向或角度），color-stop1，color-stop2，…..）;</p>
+<p>  -2.径向渐变</p>
+<p>  语法：background：radial-gradient（shape，size，center，start-color，….. ，last-color）; </p>
+<p>  属性：</p>
+<ul>
+<li><p>shape ：形状 ellipse（椭圆 默认）| circle（圆）</p>
+</li>
+<li><p>size：渐变大小</p>
+<p>farthest-corner：渐变的半径长度为从圆心到离圆心最远的角（默认）</p>
+<p>closest-side：渐变的半径长度为从圆心到离圆心最近的边</p>
+<p>closest-corner：渐变的半径长度为从圆心到离圆心最近的角</p>
+<p>farthest-side：渐变的半径长度为从圆心到离圆心最远的边</p>
+</li>
+<li><p>center：位置</p>
+<p>center：设置圆心在中心位置</p>
+<p>top：设置圆心在顶部位置</p>
+<p>bottom：设置圆心在底部位置</p>
+<p>at 圆心横坐标 圆心纵坐标 ：设定圆心的位置在一个指定位置上</p>
+</li>
+<li><p>start-color：初始颜色</p>
+</li>
+<li><p>last-color： 结束颜色</p>
+<p>-3.文字渐变 </p>
+<p>  语法：background-image：线性渐变或径向渐变；</p>
+<p>​             background-clip：text；</p>
+<p>​             text-fill-color：transparent；</p>
+<h3 id="CSS3盒模型"><a href="#CSS3盒模型" class="headerlink" title="CSS3盒模型"></a>CSS3盒模型</h3><p>  -1.box-sizing 允许你以某种方式定义某些元素，以适应指定的区域。</p>
+<p>  语法：box-sizing：content-box / border-box  / inherit（火狐和谷歌低版本需要厂商前缀）</p>
+<p>  属性：</p>
+<ul>
+<li>content-box：实际宽高为内容+边框+内边距</li>
+<li>border-box：内容包括内边距和外边框</li>
+<li>inherit：从父元素继承box-sizing的值</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
@@ -291,6 +354,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%83%8C%E6%99%AF-%E9%A2%9C%E8%89%B2-%E6%B8%90%E5%8F%98-%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag"><i class="fa fa-tag"></i> 背景 颜色 渐变 盒模型</a>
+          </div>
 
         
 
@@ -298,13 +364,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/06/02/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E5%AE%9A%E4%BD%8D%E3%80%81BFC%E4%B8%8EIFC%EF%BC%89/" rel="prev" title="稳固CSS第二天（定位、BFC与IFC）">
-      <i class="fa fa-chevron-left"></i> 稳固CSS第二天（定位、BFC与IFC）
+    <a href="/2021/06/03/CSS3%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E6%96%87%E6%9C%AC%E3%80%81%E8%BE%B9%E6%A1%86%EF%BC%89/" rel="prev" title="CSS3第二天（文本、边框）">
+      <i class="fa fa-chevron-left"></i> CSS3第二天（文本、边框）
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/06/02/HTML5%EF%BC%88%E5%A4%9A%E5%AA%92%E4%BD%93%E4%B8%8E%E7%94%BB%E5%B8%83%EF%BC%89/" rel="next" title="HTML5（多媒体与画布）">
-      HTML5（多媒体与画布） <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -364,7 +427,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">HTML5新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E6%A0%87%E7%AD%BE"><span class="nav-number">2.</span> <span class="nav-text">网页布局标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="nav-number">3.</span> <span class="nav-text">语义化标签</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">CSS3背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3%E9%A2%9C%E8%89%B2"><span class="nav-number">2.</span> <span class="nav-text">CSS3颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3%E6%B8%90%E5%8F%98"><span class="nav-number">3.</span> <span class="nav-text">CSS3渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">CSS3盒模型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

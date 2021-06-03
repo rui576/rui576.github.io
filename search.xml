@@ -40,32 +40,218 @@
 <p>  1)：root 匹配html标签，与body选择器效果一样</p>
 <p>  2)：子元素选择 </p>
 <p>​    -匹配父元素连续的子元素 :first-child | :last-child | :nth-last-child(n) | :nth-child(n)</p>
-<p>​    - :only-child 查找父元素中仅有一个子元素</p>
-<p>​    - :only-of-type 查找父元素中仅有一个兄弟元素</p>
 <ul>
-<li>:empty 查找没有元素（包含文本元素） ，即查找空元素  </li>
+<li><p>:only-child 查找父元素中仅有一个子元素</p>
+</li>
+<li><p>:only-of-type 查找父元素中仅有一个兄弟元素</p>
+</li>
+<li><p>:empty 查找没有元素（包含文本元素） ，即查找空元素  </p>
+</li>
 </ul>
 <p>-3.目标伪类</p>
-<ol>
+<ul>
 <li>:target 匹配URL指向的元素</li>
-</ol>
+</ul>
 <p>-4.UI元素（表单元素）状态伪类</p>
-<p>  1） :enabled 匹配form中 含有enabled属性的元素</p>
-<p>  2） :disabled 匹配form中 不含有enabled属性的元素</p>
-<p>  3） :checked 匹配form中处于选中状态的元素（Tips：只在Opera中生效）</p>
-<p>  4） :selection 匹配被用户选中的部分</p>
+<ul>
+<li> :enabled 匹配form中 含有enabled属性的元素</li>
+</ul>
+<ul>
+<li> :disabled 匹配form中 不含有enabled属性的元素</li>
+</ul>
+<ul>
+<li> :checked 匹配form中处于选中状态的元素（Tips：只在Opera中生效）</li>
+</ul>
+<ul>
+<li> :selection 匹配被用户选中的部分</li>
+</ul>
 <p>-5.否定伪类</p>
-<p>  1） :not 匹配所有不匹配前面简单选择器的元素</p>
+<ul>
+<li>  :not 匹配所有不匹配前面简单选择器的元素</li>
+</ul>
 <p>-6.通用兄弟元素选择器</p>
-<ol>
-<li> a~b 匹配a元素之后的b元素</li>
-</ol>
+<ul>
+<li>  a~b 匹配a元素之后的b元素</li>
+</ul>
 ]]></content>
       <categories>
         <category>CSS3</category>
       </categories>
       <tags>
         <tag>新特性</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS3第二天（文本、边框）</title>
+    <url>/2021/06/03/CSS3%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E6%96%87%E6%9C%AC%E3%80%81%E8%BE%B9%E6%A1%86%EF%BC%89/</url>
+    <content><![CDATA[<h3 id="CSS3文本"><a href="#CSS3文本" class="headerlink" title="CSS3文本"></a>CSS3文本</h3><p> -1.文本阴影 </p>
+<p>​    语法：text-shadow：h-shadow v-shadow blur color</p>
+<p>​    属性值：</p>
+<ul>
+<li><p>h-shadow{number} ：必需 水平阴影的位置 允许负值</p>
+</li>
+<li><p>v-shadow{number} ：必需 垂直阴影的位置 允许负值</p>
+</li>
+<li><p>blur{number} ：可选 模糊的距离</p>
+</li>
+<li><p>color{color} ：可选 阴影的位置</p>
+</li>
+<li><span id="more"></span></li>
+<li><p>2.文本自动换行 </p>
+</li>
+</ul>
+<p>​     语法：word-wrap：normal | break-word</p>
+<p>​     属性值：</p>
+<ul>
+<li> normal ：只在有符号断开的地方换行 （默认）</li>
+<li> break-word ：在规定的长度下直接换行</li>
+</ul>
+<p>-3.单词拆分</p>
+<p>​    语法：word-break：normal | break-all | keep-all</p>
+<p>​    属性值：</p>
+<ul>
+<li>normal ：使用浏览器的默认的换行规则</li>
+<li>break-all ：允许在单词内进行换行</li>
+<li>keep-all ：只能在半角空格或连字符处换行</li>
+</ul>
+<p>-4.文本溢出 （重要）</p>
+<ul>
+<li><p>单行文本溢出：text-overflow: clip（修剪文本） | ellipsis（显示省略号来代替被修剪的文本） | string （使用给定的字符串来代表被修剪的文本）</p>
+</li>
+<li><p>多行文本溢出：(IE9以下的版本不支持，主要是谷歌支持)</p>
+<p>​    display： -webkit-box</p>
+<p>​    -webkit-box-orient：vertical</p>
+<p>​    -webkit-line-clamp：行数</p>
+<p>​    overflow：hidden；</p>
+</li>
+</ul>
+<h3 id="CSS3边框"><a href="#CSS3边框" class="headerlink" title="CSS3边框"></a>CSS3边框</h3><p> -1.圆角边框</p>
+<p>  语法：border-radius: 1-4 length | % / 1-4 length | % （次序：左上 右上 右下 左下 ，也是顺时针）</p>
+<p>  四个方位的词：top-left | top-right | bottom-left | bottom-right</p>
+<p> -2.边框阴影</p>
+<p>  语法：box-shadow：h-shadow v-shadow blur spread（阴影尺寸） color inset（将外部阴影改为内部阴影）</p>
+<p> -3.边框图片</p>
+<p>  语法：border-image：source slice width outset repeat</p>
+<p>  属性值：</p>
+<ul>
+<li>source ：图片路径</li>
+<li>silce ：图片边框向内偏移量</li>
+<li>width：图片边框宽度</li>
+<li>outset：边框图像区域超出边框的量</li>
+<li>repeat：图像边框是否应平铺（repeat）、铺满（round）、或拉伸（stretch）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS3</category>
+      </categories>
+      <tags>
+        <tag>文本 边框</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS3第二天（背景、颜色、渐变、盒模型）</title>
+    <url>/2021/06/03/CSS3%E7%AC%AC%E4%BA%8C%E5%A4%A9%EF%BC%88%E8%83%8C%E6%99%AF%E3%80%81%E9%A2%9C%E8%89%B2%E3%80%81%E6%B8%90%E5%8F%98%E3%80%81%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%89/</url>
+    <content><![CDATA[<h3 id="CSS3背景"><a href="#CSS3背景" class="headerlink" title="CSS3背景"></a>CSS3背景</h3><p> -1.多重背景</p>
+<p>  语法：background：背景色（1） 背景图片（1） 平铺方式（1） 位置（1），背景色（2）…..</p>
+<span id="more"></span>
+
+<p> -2.background-size 设定背景图像的尺寸</p>
+<p>  语法： background-size ：length | precentage | cover | contain </p>
+<p>  属性值：</p>
+<ul>
+<li>length：设置背景图像的高度和宽度，第一个值设置宽度，第二个设置高度，如果只设置一个值，那么第二个值会被设置为 auto</li>
+<li>percentage：以父元素的百分比来设置背景图像的高度和宽度，用法和length一样</li>
+<li>cover：把背景图像扩展至足够大，已使背景图像完全覆盖背景区域。背景图像的某部分也许无法显示在背景定位区域中。</li>
+<li>contain：把图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域</li>
+</ul>
+<p>-3.backgronnd-origin 属性指定了背景图像的位置区域</p>
+<p>  语法： background-origin ：padding-box（背景图像相对于内边框来定位） | border-box （相对于边框盒） | content-box （相对于内容框）</p>
+<p>-4.background-clip 设定背景的绘制区域</p>
+<p>  语法：background-clip：padding-box（背景图像相对于内边框来定位） | border-box （相对于边框盒） | content-box （相对于内容框）</p>
+<h3 id="CSS3颜色"><a href="#CSS3颜色" class="headerlink" title="CSS3颜色"></a>CSS3颜色</h3><p>-1.rgba（r，g，b，a）</p>
+<p>  属性值：</p>
+<ul>
+<li><p>r：红色 取值范围：0-255</p>
+</li>
+<li><p>g:  绿色 取值范围：0-255</p>
+</li>
+<li><p>b:  蓝色 取值范围：0-255</p>
+</li>
+<li><p>a:  不透明度  取值范围：0-1的一个小数</p>
+</li>
+<li><p>2.HSL （h，s，l）</p>
+<p>属性值：</p>
+</li>
+<li><p>  h：色调 取值范围：0-360</p>
+</li>
+<li><p>  s：饱和度 取值范围：0-360</p>
+</li>
+<li><p>   l：亮度 取值范围：0-100%</p>
+</li>
+<li><p>3.HSLA （h，s，l，a）</p>
+<p>属性值：</p>
+</li>
+<li><p>  h：色调 取值范围：0-360</p>
+</li>
+<li><p>  s：饱和度 取值范围：0-360</p>
+</li>
+<li><p>   l：亮度 取值范围：0-100%</p>
+</li>
+<li><p>   a：不透明度 取值范围：0-1的一个小数</p>
+</li>
+</ul>
+<p>-4.Opacity 设置元素的不透明级别 大多数请况下用于做元素的遮罩效果</p>
+<p>  语法： opacity：value | inherit</p>
+<p>  取值：</p>
+<ul>
+<li><p>value：规定不透明度。从0.0（完全透明）到1.0（完全不透明）。</p>
+</li>
+<li><p>inherit：从父元素继承opacity属性的值</p>
+<p>Tips：IE8及8以下的版本不支持opacity。兼容方式为：再添加一行代码来处理不兼容。</p>
+<p>  代码：filter：alpha（opacity = 数值）  数值的范围：0-100</p>
+</li>
+</ul>
+<h3 id="CSS3渐变"><a href="#CSS3渐变" class="headerlink" title="CSS3渐变"></a>CSS3渐变</h3><p>  主要用来设置背景或制作三维图</p>
+<p>  -1.线性渐变</p>
+<p>  语法： background：linear-gradient（direction（方向或角度），color-stop1，color-stop2，…..）;</p>
+<p>  -2.径向渐变</p>
+<p>  语法：background：radial-gradient（shape，size，center，start-color，….. ，last-color）; </p>
+<p>  属性：</p>
+<ul>
+<li><p>shape ：形状 ellipse（椭圆 默认）| circle（圆）</p>
+</li>
+<li><p>size：渐变大小</p>
+<p>farthest-corner：渐变的半径长度为从圆心到离圆心最远的角（默认）</p>
+<p>closest-side：渐变的半径长度为从圆心到离圆心最近的边</p>
+<p>closest-corner：渐变的半径长度为从圆心到离圆心最近的角</p>
+<p>farthest-side：渐变的半径长度为从圆心到离圆心最远的边</p>
+</li>
+<li><p>center：位置</p>
+<p>center：设置圆心在中心位置</p>
+<p>top：设置圆心在顶部位置</p>
+<p>bottom：设置圆心在底部位置</p>
+<p>at 圆心横坐标 圆心纵坐标 ：设定圆心的位置在一个指定位置上</p>
+</li>
+<li><p>start-color：初始颜色</p>
+</li>
+<li><p>last-color： 结束颜色</p>
+<p>-3.文字渐变 </p>
+<p>  语法：background-image：线性渐变或径向渐变；</p>
+<p>​             background-clip：text；</p>
+<p>​             text-fill-color：transparent；</p>
+<h3 id="CSS3盒模型"><a href="#CSS3盒模型" class="headerlink" title="CSS3盒模型"></a>CSS3盒模型</h3><p>  -1.box-sizing 允许你以某种方式定义某些元素，以适应指定的区域。</p>
+<p>  语法：box-sizing：content-box / border-box  / inherit（火狐和谷歌低版本需要厂商前缀）</p>
+<p>  属性：</p>
+<ul>
+<li>content-box：实际宽高为内容+边框+内边距</li>
+<li>border-box：内容包括内边距和外边框</li>
+<li>inherit：从父元素继承box-sizing的值</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>背景 颜色 渐变 盒模型</tag>
       </tags>
   </entry>
   <entry>
@@ -194,34 +380,6 @@
       </categories>
   </entry>
   <entry>
-    <title>稳固CSS第一天（CSS引用方式）</title>
-    <url>/2021/06/01/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88CSS%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%89/</url>
-    <content><![CDATA[<p>CSS层叠样式表，用来美化网页。做到结构（HTML）和表现（CSS）分离</p>
-<p>​      基本语法：选择器 {</p>
-<p>​         属性: 属性值;</p>
-<p>​         }</p>
-<p>​     </p>
-<h3 id="CSS引用方式-：-行间样式、内部样式、外部样式、导入外部样式。"><a href="#CSS引用方式-：-行间样式、内部样式、外部样式、导入外部样式。" class="headerlink" title="CSS引用方式 ： 行间样式、内部样式、外部样式、导入外部样式。"></a>CSS引用方式 ： 行间样式、内部样式、外部样式、导入外部样式。</h3><p>​       <span id="more"></span></p>
-<p>​       行间样式：直接在标签书写样式</p>
-<p>​       内部样式：在文件的内部书写样式</p>
-<p>​       外部样式：先创建CSS文件，再用link标签引入这个文件</p>
-<p>​       导入外部样式： 先创建CSS文件 ，在再style标签中用import导入这个样式文件</p>
-<p>​    </p>
-<p>​     以上四种引入方式的区别是：行内样式只作用于当前标签；内部样式作用于当前文件；外部样式可以被多个HTML文件引用</p>
-<p>​     在实际开发中，最好使用外部样式。</p>
-<h4 id="外部样式分为link和import引入方式，区别是"><a href="#外部样式分为link和import引入方式，区别是" class="headerlink" title="外部样式分为link和import引入方式，区别是"></a>外部样式分为link和import引入方式，区别是</h4><p>​       1.link是XHTML标签，除了加载css外，还可以定义RSS等其他事务；@import属于css范畴，只能加载css</p>
-<p>​       2.link引入css时，在页面载入时同时加载；而@import需要页面网页完全载入以后加载</p>
-<p>​       3.link是XHTML标签，无兼容问题；@import是在CSS2.1提出的，低版本的浏览器不支持</p>
-<p>​       4.link支持使用javascript控制DOM去改变样式；而@import不支持</p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>引用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>稳固CSS第一天（CSS样式）</title>
     <url>/2021/06/01/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88CSS%E6%A0%B7%E5%BC%8F%EF%BC%89/</url>
     <content><![CDATA[<h3 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h3><h4 id="样式权重："><a href="#样式权重：" class="headerlink" title="样式权重："></a>样式权重：</h4><p>​     !important（10000）&gt;内联样式（1000）&gt;id选择器（100）&gt;类、伪类选择器（10）&gt;标签选择器（1）</p>
@@ -336,6 +494,59 @@
       </tags>
   </entry>
   <entry>
+    <title>稳固CSS第一天（CSS引用方式）</title>
+    <url>/2021/06/01/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88CSS%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%89/</url>
+    <content><![CDATA[<p>CSS层叠样式表，用来美化网页。做到结构（HTML）和表现（CSS）分离</p>
+<p>​      基本语法：选择器 {</p>
+<p>​         属性: 属性值;</p>
+<p>​         }</p>
+<p>​     </p>
+<h3 id="CSS引用方式-：-行间样式、内部样式、外部样式、导入外部样式。"><a href="#CSS引用方式-：-行间样式、内部样式、外部样式、导入外部样式。" class="headerlink" title="CSS引用方式 ： 行间样式、内部样式、外部样式、导入外部样式。"></a>CSS引用方式 ： 行间样式、内部样式、外部样式、导入外部样式。</h3><p>​       <span id="more"></span></p>
+<p>​       行间样式：直接在标签书写样式</p>
+<p>​       内部样式：在文件的内部书写样式</p>
+<p>​       外部样式：先创建CSS文件，再用link标签引入这个文件</p>
+<p>​       导入外部样式： 先创建CSS文件 ，在再style标签中用import导入这个样式文件</p>
+<p>​    </p>
+<p>​     以上四种引入方式的区别是：行内样式只作用于当前标签；内部样式作用于当前文件；外部样式可以被多个HTML文件引用</p>
+<p>​     在实际开发中，最好使用外部样式。</p>
+<h4 id="外部样式分为link和import引入方式，区别是"><a href="#外部样式分为link和import引入方式，区别是" class="headerlink" title="外部样式分为link和import引入方式，区别是"></a>外部样式分为link和import引入方式，区别是</h4><p>​       1.link是XHTML标签，除了加载css外，还可以定义RSS等其他事务；@import属于css范畴，只能加载css</p>
+<p>​       2.link引入css时，在页面载入时同时加载；而@import需要页面网页完全载入以后加载</p>
+<p>​       3.link是XHTML标签，无兼容问题；@import是在CSS2.1提出的，低版本的浏览器不支持</p>
+<p>​       4.link支持使用javascript控制DOM去改变样式；而@import不支持</p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>引用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>稳固CSS第一天（伪类与伪元素）</title>
+    <url>/2021/06/01/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%EF%BC%89/</url>
+    <content><![CDATA[<h3 id="CSS伪元素"><a href="#CSS伪元素" class="headerlink" title="CSS伪元素"></a>CSS伪元素</h3><h4 id="CSS伪元素与伪类的区别"><a href="#CSS伪元素与伪类的区别" class="headerlink" title="CSS伪元素与伪类的区别"></a>CSS伪元素与伪类的区别</h4><p>​      CSS引入伪元素和伪类概念是为了格式化文档以外的信息。也就是说伪类和伪元素是用来修饰不在文档树中的部分</p>
+<p>​      伪类：用于当已有元素处于某个状态，为其添加对应样式，这个样式是根据用户行为而动态变化的。它只有处于dom文档树</p>
+<p>​      无法描述的状态下才能为其添加样式，所以将其称为伪类。</p>
+<p>​      伪元素：用于创建一些不在文档树中的元素，并为其添加样式。用户虽然可以看到文本，但文本实际不存在文档树中。</p>
+<span id="more"></span>
+
+
+
+<h4 id="伪类与伪元素的特点："><a href="#伪类与伪元素的特点：" class="headerlink" title="伪类与伪元素的特点："></a>伪类与伪元素的特点：</h4><p>​       -伪元素和伪类都不会出现在源文档或者文档树中</p>
+<p>​       -伪元素允许出现在选择器的任何位置，而一个伪元素只能跟在最后一个简单选择器后面</p>
+<p>​       -伪类名和伪元素名都是对大小写不敏感的</p>
+<p>​       -有些伪类互斥，而不互斥的可以用在同一个元素上</p>
+<h4 id="伪元素注意的点："><a href="#伪元素注意的点：" class="headerlink" title="伪元素注意的点："></a>伪元素注意的点：</h4><p>​       :before/:after/:first-letter（第一个字）/first-line（第一行） 这些前面可以是一个冒号 也可以是双冒号</p>
+<p>​       ::selection/::placeholder/::backdrop 这些前面只能是双冒号</p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>伪类与伪元素</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>稳固CSS第一天（table与列表样式）</title>
     <url>/2021/06/01/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88table%E4%B8%8E%E5%88%97%E8%A1%A8%E6%A0%B7%E5%BC%8F%EF%BC%89/</url>
     <content><![CDATA[<h2 id="table样式与列表样式"><a href="#table样式与列表样式" class="headerlink" title="table样式与列表样式"></a>table样式与列表样式</h2><h3 id="table样式：-table一般不用来布局，主要用来格式化数据"><a href="#table样式：-table一般不用来布局，主要用来格式化数据" class="headerlink" title="table样式： table一般不用来布局，主要用来格式化数据"></a>table样式： table一般不用来布局，主要用来格式化数据</h3><h4 id="属性："><a href="#属性：" class="headerlink" title="-属性："></a>-属性：</h4><p>​        width：宽度</p>
@@ -369,29 +580,31 @@
       </tags>
   </entry>
   <entry>
-    <title>稳固CSS第一天（伪类与伪元素）</title>
-    <url>/2021/06/01/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%EF%BC%89/</url>
-    <content><![CDATA[<h3 id="CSS伪元素"><a href="#CSS伪元素" class="headerlink" title="CSS伪元素"></a>CSS伪元素</h3><h4 id="CSS伪元素与伪类的区别"><a href="#CSS伪元素与伪类的区别" class="headerlink" title="CSS伪元素与伪类的区别"></a>CSS伪元素与伪类的区别</h4><p>​      CSS引入伪元素和伪类概念是为了格式化文档以外的信息。也就是说伪类和伪元素是用来修饰不在文档树中的部分</p>
-<p>​      伪类：用于当已有元素处于某个状态，为其添加对应样式，这个样式是根据用户行为而动态变化的。它只有处于dom文档树</p>
-<p>​      无法描述的状态下才能为其添加样式，所以将其称为伪类。</p>
-<p>​      伪元素：用于创建一些不在文档树中的元素，并为其添加样式。用户虽然可以看到文本，但文本实际不存在文档树中。</p>
-<span id="more"></span>
+    <title>稳固CSS第一天（盒子模型）</title>
+    <url>/2021/06/01/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="CSS盒子模型"><a href="#CSS盒子模型" class="headerlink" title="CSS盒子模型"></a>CSS盒子模型</h2><h3 id="每个元素都是一个盒子，一个盒子由margin（外边距），border（边框线），padding（内边框）和content（内容）组成"><a href="#每个元素都是一个盒子，一个盒子由margin（外边距），border（边框线），padding（内边框）和content（内容）组成" class="headerlink" title="每个元素都是一个盒子，一个盒子由margin（外边距），border（边框线），padding（内边框）和content（内容）组成"></a>每个元素都是一个盒子，一个盒子由margin（外边距），border（边框线），padding（内边框）和content（内容）组成</h3><span id="more"></span>
 
-
-
-<h4 id="伪类与伪元素的特点："><a href="#伪类与伪元素的特点：" class="headerlink" title="伪类与伪元素的特点："></a>伪类与伪元素的特点：</h4><p>​       -伪元素和伪类都不会出现在源文档或者文档树中</p>
-<p>​       -伪元素允许出现在选择器的任何位置，而一个伪元素只能跟在最后一个简单选择器后面</p>
-<p>​       -伪类名和伪元素名都是对大小写不敏感的</p>
-<p>​       -有些伪类互斥，而不互斥的可以用在同一个元素上</p>
-<h4 id="伪元素注意的点："><a href="#伪元素注意的点：" class="headerlink" title="伪元素注意的点："></a>伪元素注意的点：</h4><p>​       :before/:after/:first-letter（第一个字）/first-line（第一行） 这些前面可以是一个冒号 也可以是双冒号</p>
-<p>​       ::selection/::placeholder/::backdrop 这些前面只能是双冒号</p>
+<h4 id="margin-外边距"><a href="#margin-外边距" class="headerlink" title="-margin 外边距"></a>-margin 外边距</h4><p>​     系统默认外边距为8px。</p>
+<p>​     -margin：可以用来设置任意一个边的边距，可以带1至4个参数。</p>
+<p>​      一个：（a px）表示上下左右都为a px</p>
+<p>​      两个：（apx ，bpx）表示上下为apx，左右为bpx</p>
+<p>​      三个：（apx ，bpx ，cpx）表示上外边距为apx，左右为bpx，下为cpx</p>
+<p>​      四个： （apx ，bpx ，cpx， dpx） 依次为上 、右、 下、 左，顺时针</p>
+<h4 id="padding-内边距-指元素的文本内容与边框之间的距离"><a href="#padding-内边距-指元素的文本内容与边框之间的距离" class="headerlink" title="-padding 内边距 指元素的文本内容与边框之间的距离"></a>-padding 内边距 指元素的文本内容与边框之间的距离</h4><p>​     padding：用法与margin完全一样</p>
+<h4 id="border-边框"><a href="#border-边框" class="headerlink" title="-border 边框"></a>-border 边框</h4><p>​     border-width：边框线宽度</p>
+<p>​     border-style：边框线样式</p>
+<p>​     border-color：边框线颜色</p>
+<h4 id="盒子的真实尺寸"><a href="#盒子的真实尺寸" class="headerlink" title="盒子的真实尺寸"></a>盒子的真实尺寸</h4><p>​     盒子宽度 = width+padding左右+border左右</p>
+<p>​     盒子高度 = height+padding上下+border上下</p>
+<h3 id="display属性：用来设置元素显示方式。"><a href="#display属性：用来设置元素显示方式。" class="headerlink" title="display属性：用来设置元素显示方式。"></a>display属性：用来设置元素显示方式。</h3><p>​     属性值：</p>
+<p>​        none：不显示元素</p>
+<p>​        block：块显示，在元素前后设置换行符，目的：将行级元素转换为块级元素</p>
+<p>​        lnline：行内显示，将块级转换为行级</p>
+<p>​        inline-block：将块级或行级标签转换为行内块标签</p>
 ]]></content>
       <categories>
         <category>CSS</category>
       </categories>
-      <tags>
-        <tag>伪类与伪元素</tag>
-      </tags>
   </entry>
   <entry>
     <title>稳固CSS第一天（浮动）</title>
@@ -423,78 +636,6 @@
       </categories>
       <tags>
         <tag>浮动</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>稳固CSS第一天（盒子模型）</title>
-    <url>/2021/06/01/%E7%A8%B3%E5%9B%BACSS%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="CSS盒子模型"><a href="#CSS盒子模型" class="headerlink" title="CSS盒子模型"></a>CSS盒子模型</h2><h3 id="每个元素都是一个盒子，一个盒子由margin（外边距），border（边框线），padding（内边框）和content（内容）组成"><a href="#每个元素都是一个盒子，一个盒子由margin（外边距），border（边框线），padding（内边框）和content（内容）组成" class="headerlink" title="每个元素都是一个盒子，一个盒子由margin（外边距），border（边框线），padding（内边框）和content（内容）组成"></a>每个元素都是一个盒子，一个盒子由margin（外边距），border（边框线），padding（内边框）和content（内容）组成</h3><span id="more"></span>
-
-<h4 id="margin-外边距"><a href="#margin-外边距" class="headerlink" title="-margin 外边距"></a>-margin 外边距</h4><p>​     系统默认外边距为8px。</p>
-<p>​     -margin：可以用来设置任意一个边的边距，可以带1至4个参数。</p>
-<p>​      一个：（a px）表示上下左右都为a px</p>
-<p>​      两个：（apx ，bpx）表示上下为apx，左右为bpx</p>
-<p>​      三个：（apx ，bpx ，cpx）表示上外边距为apx，左右为bpx，下为cpx</p>
-<p>​      四个： （apx ，bpx ，cpx， dpx） 依次为上 、右、 下、 左，顺时针</p>
-<h4 id="padding-内边距-指元素的文本内容与边框之间的距离"><a href="#padding-内边距-指元素的文本内容与边框之间的距离" class="headerlink" title="-padding 内边距 指元素的文本内容与边框之间的距离"></a>-padding 内边距 指元素的文本内容与边框之间的距离</h4><p>​     padding：用法与margin完全一样</p>
-<h4 id="border-边框"><a href="#border-边框" class="headerlink" title="-border 边框"></a>-border 边框</h4><p>​     border-width：边框线宽度</p>
-<p>​     border-style：边框线样式</p>
-<p>​     border-color：边框线颜色</p>
-<h4 id="盒子的真实尺寸"><a href="#盒子的真实尺寸" class="headerlink" title="盒子的真实尺寸"></a>盒子的真实尺寸</h4><p>​     盒子宽度 = width+padding左右+border左右</p>
-<p>​     盒子高度 = height+padding上下+border上下</p>
-<h3 id="display属性：用来设置元素显示方式。"><a href="#display属性：用来设置元素显示方式。" class="headerlink" title="display属性：用来设置元素显示方式。"></a>display属性：用来设置元素显示方式。</h3><p>​     属性值：</p>
-<p>​        none：不显示元素</p>
-<p>​        block：块显示，在元素前后设置换行符，目的：将行级元素转换为块级元素</p>
-<p>​        lnline：行内显示，将块级转换为行级</p>
-<p>​        inline-block：将块级或行级标签转换为行内块标签</p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>稳固HTML第一天（from与iframe）</title>
-    <url>/2021/05/31/%E7%A8%B3%E5%9B%BAHTML%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88from%E4%B8%8Eiframe%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="From-元素及分类"><a href="#From-元素及分类" class="headerlink" title="From 元素及分类"></a>From 元素及分类</h1><p>from 表单标签是所有标签最核心的标签之一。它是用来实现前后端交互的一个重要标签 </p>
-<p>​     常用属性 </p>
-<p>​         name 表单名称</p>
-<p>​         action 表单数据提交地方 通常是一个后台文件名或者网址 如果是# 则是提交到当前文件下</p>
-<p>​         method 前端提交数据到后端的方法，主要有get和post，默认的是get ，get会带值，post不带 </p>
-<span id="more"></span>
-
-<h3 id="表单元素分为："><a href="#表单元素分为：" class="headerlink" title="表单元素分为："></a>表单元素分为：</h3><h2 id="input类"><a href="#input类" class="headerlink" title="input类"></a>input类</h2><p>​        主要用来完成输入、选择或发出指令。</p>
-<p>​        type：text/password/radio/checkbox/file/button/image/submit/reset</p>
-<h4 id="text-单行文本输入框-默认值"><a href="#text-单行文本输入框-默认值" class="headerlink" title="text:单行文本输入框 默认值"></a>text:单行文本输入框 默认值</h4><p>​          属性：placeholder（提示）/ name（命名）/minlength（最少输入字符个数）/maxlength(最多输入字符个数)</p>
-<p>​             disabled（失效）/readonly（只读）/value (默认值)/pattern (正则)</p>
-<p>​        password：密码框 属性与text一样</p>
-<h4 id="rodio：单选框，通常属性是两项以上。"><a href="#rodio：单选框，通常属性是两项以上。" class="headerlink" title="rodio：单选框，通常属性是两项以上。"></a>rodio：单选框，通常属性是两项以上。</h4><p>​          属性：name（必须要有）/value/check（选中）/disabled（失效）/readonly（只读）</p>
-<h4 id="checkbox：复选框，可以用来选择0项、1项或多项。"><a href="#checkbox：复选框，可以用来选择0项、1项或多项。" class="headerlink" title="checkbox：复选框，可以用来选择0项、1项或多项。"></a>checkbox：复选框，可以用来选择0项、1项或多项。</h4><p>​          属性：name（必须要有）/value/check（默认选中）/disabled（失效）/readonly（只读）</p>
-<h4 id="file：文件上传按钮"><a href="#file：文件上传按钮" class="headerlink" title="file：文件上传按钮"></a>file：文件上传按钮</h4><h4 id="button：普通按钮，通常用它去调用脚本代码。"><a href="#button：普通按钮，通常用它去调用脚本代码。" class="headerlink" title="button：普通按钮，通常用它去调用脚本代码。"></a>button：普通按钮，通常用它去调用脚本代码。</h4><p>​          属性：value(按钮标题)/disabled（失效）</p>
-<p>​        </p>
-<h4 id="image：图片按钮，用法与button一样。有个特殊属性：src（用来加载提示图片，用它替换了value）"><a href="#image：图片按钮，用法与button一样。有个特殊属性：src（用来加载提示图片，用它替换了value）" class="headerlink" title="image：图片按钮，用法与button一样。有个特殊属性：src（用来加载提示图片，用它替换了value）"></a>image：图片按钮，用法与button一样。有个特殊属性：src（用来加载提示图片，用它替换了value）</h4><p>​          它也有提交功能，和submit功能一样</p>
-<h4 id="submit：提交按钮，用来将表单数据提交到后台"><a href="#submit：提交按钮，用来将表单数据提交到后台" class="headerlink" title="submit：提交按钮，用来将表单数据提交到后台"></a>submit：提交按钮，用来将表单数据提交到后台</h4><p>​          属性：value(按钮标题)/disabled（失效）</p>
-<h4 id="reset：重置按钮，将表单所有组件输入的内容全部清空，还原为初始状态"><a href="#reset：重置按钮，将表单所有组件输入的内容全部清空，还原为初始状态" class="headerlink" title="reset：重置按钮，将表单所有组件输入的内容全部清空，还原为初始状态"></a>reset：重置按钮，将表单所有组件输入的内容全部清空，还原为初始状态</h4><p>​          属性：value(按钮标题)/disabled（失效）</p>
-<h2 id="textarea类"><a href="#textarea类" class="headerlink" title="textarea类"></a>textarea类</h2><p>​       文本域（也叫多行文本框），主要用来输入大批量内容</p>
-<p>​       常用属性：name/id/clos(列数)/rows（行数）/placeholder/minlength/maxlength/required(必须输入)/value</p>
-<h2 id="select类"><a href="#select类" class="headerlink" title="select类"></a>select类</h2><p>​       下拉列表框，默认用于单项选择，</p>
-<p>​       属性：用option呈现每个选项 /multiple 表示可以多选 下拉列表框变成列表框 /size 最多显示行数</p>
-<h2 id="button类"><a href="#button类" class="headerlink" title="button类"></a>button类</h2><p>​       写在from表单中的和input类里的作用一样 都是提交表单内的数据 ，写在外面的button 可以加入js逻辑来使用</p>
-<h1 id="iframe-框架集"><a href="#iframe-框架集" class="headerlink" title="iframe 框架集"></a>iframe 框架集</h1><p>  iframe:框架集 用来将多个网页文件组合成一个文件</p>
-<p>​    属性：</p>
-<p>​      name:框架名</p>
-<p>​      src：引入的外部html文件</p>
-<p>​      scrolling：滚动条（yes/no/auto）</p>
-<p>​      width：设置宽度</p>
-<p>​      height：设置高度</p>
-<p>​      frameboder：是否有边框（0/1）</p>
-<p>​      marginheight：框架离顶部或底部的距离</p>
-<p>​      marginwidth：框架离左边或右边的距离、</p>
-<h5 id="注意：在实际开发中尽量少用iframe，因为它破坏了前进和后退功能，且不利于SEO"><a href="#注意：在实际开发中尽量少用iframe，因为它破坏了前进和后退功能，且不利于SEO" class="headerlink" title="注意：在实际开发中尽量少用iframe，因为它破坏了前进和后退功能，且不利于SEO"></a>注意：在实际开发中尽量少用iframe，因为它破坏了前进和后退功能，且不利于SEO</h5>]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>from</tag>
       </tags>
   </entry>
   <entry>
@@ -585,25 +726,66 @@
       </tags>
   </entry>
   <entry>
-    <title>稳固HTML第一天（表格）</title>
-    <url>/2021/05/31/%E7%A8%B3%E5%9B%BAHTML%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88%E8%A1%A8%E6%A0%BC%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><h3 id="1-1绘制基本表格"><a href="#1-1绘制基本表格" class="headerlink" title="1.1绘制基本表格"></a>1.1绘制基本表格</h3><span id="more"></span>
+    <title>稳固HTML第一天（from与iframe）</title>
+    <url>/2021/05/31/%E7%A8%B3%E5%9B%BAHTML%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88from%E4%B8%8Eiframe%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="From-元素及分类"><a href="#From-元素及分类" class="headerlink" title="From 元素及分类"></a>From 元素及分类</h1><p>from 表单标签是所有标签最核心的标签之一。它是用来实现前后端交互的一个重要标签 </p>
+<p>​     常用属性 </p>
+<p>​         name 表单名称</p>
+<p>​         action 表单数据提交地方 通常是一个后台文件名或者网址 如果是# 则是提交到当前文件下</p>
+<p>​         method 前端提交数据到后端的方法，主要有get和post，默认的是get ，get会带值，post不带 </p>
+<span id="more"></span>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- table 表格 主要用于呈现格式化数据 表格是由行和列组成</span></span><br><span class="line"><span class="comment">         格式：</span></span><br><span class="line"><span class="comment">            &lt;table&gt;</span></span><br><span class="line"><span class="comment">                 &lt;tr&gt;</span></span><br><span class="line"><span class="comment">                     &lt;th&gt;&lt;/th&gt; 表头 主要对下面内容起说明作用 th的内容会自动加粗和居中显示</span></span><br><span class="line"><span class="comment">                     &lt;td&gt;&lt;/td&gt;</span></span><br><span class="line"><span class="comment">                     .......</span></span><br><span class="line"><span class="comment">                 &lt;/tr&gt;</span></span><br><span class="line"><span class="comment">                 .....</span></span><br><span class="line"><span class="comment">            &lt;/table&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            table+tr*2&gt;td&#123;内容$&#125;*3</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">        表格属性：</span></span><br><span class="line"><span class="comment">              1.boder 设置表格边框 默认单位是像素</span></span><br><span class="line"><span class="comment">              2.width 设置表格宽度 默认单位是像素</span></span><br><span class="line"><span class="comment">              3.align 设置表格对齐 left（默认）/center/right</span></span><br><span class="line"><span class="comment">              4.cellpadding 设置单元格间距 </span></span><br><span class="line"><span class="comment">              5.cellspacing 设置像素间隙</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">cellspacing</span>=<span class="string">&quot;0&quot;</span> <span class="attr">cellpadding</span>=<span class="string">&quot;10&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>学号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>住址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>007<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>岳阳<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>008<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>李四<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>长沙<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="表单元素分为："><a href="#表单元素分为：" class="headerlink" title="表单元素分为："></a>表单元素分为：</h3><h2 id="input类"><a href="#input类" class="headerlink" title="input类"></a>input类</h2><p>​        主要用来完成输入、选择或发出指令。</p>
+<p>​        type：text/password/radio/checkbox/file/button/image/submit/reset</p>
+<h4 id="text-单行文本输入框-默认值"><a href="#text-单行文本输入框-默认值" class="headerlink" title="text:单行文本输入框 默认值"></a>text:单行文本输入框 默认值</h4><p>​          属性：placeholder（提示）/ name（命名）/minlength（最少输入字符个数）/maxlength(最多输入字符个数)</p>
+<p>​             disabled（失效）/readonly（只读）/value (默认值)/pattern (正则)</p>
+<p>​        password：密码框 属性与text一样</p>
+<h4 id="rodio：单选框，通常属性是两项以上。"><a href="#rodio：单选框，通常属性是两项以上。" class="headerlink" title="rodio：单选框，通常属性是两项以上。"></a>rodio：单选框，通常属性是两项以上。</h4><p>​          属性：name（必须要有）/value/check（选中）/disabled（失效）/readonly（只读）</p>
+<h4 id="checkbox：复选框，可以用来选择0项、1项或多项。"><a href="#checkbox：复选框，可以用来选择0项、1项或多项。" class="headerlink" title="checkbox：复选框，可以用来选择0项、1项或多项。"></a>checkbox：复选框，可以用来选择0项、1项或多项。</h4><p>​          属性：name（必须要有）/value/check（默认选中）/disabled（失效）/readonly（只读）</p>
+<h4 id="file：文件上传按钮"><a href="#file：文件上传按钮" class="headerlink" title="file：文件上传按钮"></a>file：文件上传按钮</h4><h4 id="button：普通按钮，通常用它去调用脚本代码。"><a href="#button：普通按钮，通常用它去调用脚本代码。" class="headerlink" title="button：普通按钮，通常用它去调用脚本代码。"></a>button：普通按钮，通常用它去调用脚本代码。</h4><p>​          属性：value(按钮标题)/disabled（失效）</p>
+<p>​        </p>
+<h4 id="image：图片按钮，用法与button一样。有个特殊属性：src（用来加载提示图片，用它替换了value）"><a href="#image：图片按钮，用法与button一样。有个特殊属性：src（用来加载提示图片，用它替换了value）" class="headerlink" title="image：图片按钮，用法与button一样。有个特殊属性：src（用来加载提示图片，用它替换了value）"></a>image：图片按钮，用法与button一样。有个特殊属性：src（用来加载提示图片，用它替换了value）</h4><p>​          它也有提交功能，和submit功能一样</p>
+<h4 id="submit：提交按钮，用来将表单数据提交到后台"><a href="#submit：提交按钮，用来将表单数据提交到后台" class="headerlink" title="submit：提交按钮，用来将表单数据提交到后台"></a>submit：提交按钮，用来将表单数据提交到后台</h4><p>​          属性：value(按钮标题)/disabled（失效）</p>
+<h4 id="reset：重置按钮，将表单所有组件输入的内容全部清空，还原为初始状态"><a href="#reset：重置按钮，将表单所有组件输入的内容全部清空，还原为初始状态" class="headerlink" title="reset：重置按钮，将表单所有组件输入的内容全部清空，还原为初始状态"></a>reset：重置按钮，将表单所有组件输入的内容全部清空，还原为初始状态</h4><p>​          属性：value(按钮标题)/disabled（失效）</p>
+<h2 id="textarea类"><a href="#textarea类" class="headerlink" title="textarea类"></a>textarea类</h2><p>​       文本域（也叫多行文本框），主要用来输入大批量内容</p>
+<p>​       常用属性：name/id/clos(列数)/rows（行数）/placeholder/minlength/maxlength/required(必须输入)/value</p>
+<h2 id="select类"><a href="#select类" class="headerlink" title="select类"></a>select类</h2><p>​       下拉列表框，默认用于单项选择，</p>
+<p>​       属性：用option呈现每个选项 /multiple 表示可以多选 下拉列表框变成列表框 /size 最多显示行数</p>
+<h2 id="button类"><a href="#button类" class="headerlink" title="button类"></a>button类</h2><p>​       写在from表单中的和input类里的作用一样 都是提交表单内的数据 ，写在外面的button 可以加入js逻辑来使用</p>
+<h1 id="iframe-框架集"><a href="#iframe-框架集" class="headerlink" title="iframe 框架集"></a>iframe 框架集</h1><p>  iframe:框架集 用来将多个网页文件组合成一个文件</p>
+<p>​    属性：</p>
+<p>​      name:框架名</p>
+<p>​      src：引入的外部html文件</p>
+<p>​      scrolling：滚动条（yes/no/auto）</p>
+<p>​      width：设置宽度</p>
+<p>​      height：设置高度</p>
+<p>​      frameboder：是否有边框（0/1）</p>
+<p>​      marginheight：框架离顶部或底部的距离</p>
+<p>​      marginwidth：框架离左边或右边的距离、</p>
+<h5 id="注意：在实际开发中尽量少用iframe，因为它破坏了前进和后退功能，且不利于SEO"><a href="#注意：在实际开发中尽量少用iframe，因为它破坏了前进和后退功能，且不利于SEO" class="headerlink" title="注意：在实际开发中尽量少用iframe，因为它破坏了前进和后退功能，且不利于SEO"></a>注意：在实际开发中尽量少用iframe，因为它破坏了前进和后退功能，且不利于SEO</h5>]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>from</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>稳固HTML第一天（页面初始化分析）</title>
+    <url>/2021/05/31/%E7%A8%B3%E5%9B%BAHTML%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88%E9%A1%B5%E9%9D%A2%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%86%E6%9E%90%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="HTML页面"><a href="#HTML页面" class="headerlink" title="HTML页面"></a>HTML页面</h2><p>1.HTML  超文本标记语言。它是一种标志性语言，非编程语言，不能使用逻辑运算。通过标签将网上的文档格式进行统一，使分散的网络资源链接为一个逻辑整体。</p>
+<p>1.1 超文本：是一种组织信息方式，通过超级链接将多种媒介关联起来。</p>
+<p>1.2 标记： 标签，用&lt; &gt;包裹的具有一定含义的内容。</p>
+<p>2.HTML页面初始化分析</p>
+<span id="more"></span>
 
-<p><a href="https://www.imagehub.cc/image/Y7ekU"><img src="https://s1.imagehub.cc/images/2021/05/31/01.png" alt="01.png"></a></p>
-<h3 id="1-2-跨行-跨列"><a href="#1-2-跨行-跨列" class="headerlink" title="1.2 跨行/跨列"></a>1.2 跨行/跨列</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 跨行/跨列属性主要用来绘制复杂表格</span></span><br><span class="line"><span class="comment">        rowspan：跨行</span></span><br><span class="line"><span class="comment">        colspan：跨列</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> <span class="attr">valign</span>=<span class="string">&quot;bottom&quot;</span>&gt;</span>内容区01<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- valign:垂直对齐（top/middle/bottom） --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;3&quot;</span>&gt;</span>内容区03<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;td&gt;内容区01&lt;/td&gt; --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;td&gt;内容区03&lt;/td&gt; --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区01<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;td&gt;内容区03&lt;/td&gt; --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span>&gt;</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>内容区01<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;2&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区03<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;3&quot;</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>内容区01<span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.imagehub.cc/image/Y7Or4"><img src="https://s1.imagehub.cc/images/2021/05/31/02.png" alt="02.png"></a></p>
-<h3 id="1-3-完整表单组成"><a href="#1-3-完整表单组成" class="headerlink" title="1.3 完整表单组成"></a>1.3 完整表单组成</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>完整表格<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 完整表格组成 ：caption（标题）、thead（表头）、tbody（表体）、tfoot（表尾）四部分组成 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;600&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">caption</span>&gt;</span>学生信息表<span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>学号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>家庭住址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>备注<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>001<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>TOM*<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>长沙<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>0000000<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>002<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>CAT<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>岳阳<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>003<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>Mouse<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>222222222<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;4&quot;</span>&gt;</span>附注：*为优秀学生<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tfoot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.imagehub.cc/image/Y71C5"><img src="https://s1.imagehub.cc/images/2021/05/31/03.png" alt="03.png"></a></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="comment">&lt;!--申明 下面的代码将由HTML5规范去解析--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span><span class="comment">&lt;!-- lang : language 语言 en：English 这里表达的是这个页面是英文页面 zh：为中文页面--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> <span class="comment">&lt;!-- 头部标签，主要用来完成一个网页的相关设置--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- meta 元，主要用于完成对应设置--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span> <span class="comment">&lt;!--设置汉字编码--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="comment">&lt;!-- content内填写网页的搜索关键字--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="comment">&lt;!--content内填写网站的描述内容--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span> <span class="comment">&lt;!-- 这里是针对IE8 进行特别的渲染设置 避免IE8出错--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- viewport 显示器显示网页的大小</span></span><br><span class="line"><span class="comment">         content属性</span></span><br><span class="line"><span class="comment">           --width 和height 指令分别指定视区的逻辑宽度和高度。它们的值可以是以像素为单位的数字，也可以是一个特殊的标记符号</span></span><br><span class="line"><span class="comment">           --initial-scale用于设置Web页面的初始缩放比例。设为1.0则显示未经缩放的Web页面</span></span><br><span class="line"><span class="comment">           --maximum-scale和minimum-scale用于设置用户对于Web页面缩放比例的限制。值的范围为0.25~10.0之间</span></span><br><span class="line"><span class="comment">           --user-scalable指定用户是否可以缩放视区，即缩放Web页面的视图。值为yes时允许用户进行缩放，值为no时不允许缩放</span></span><br><span class="line"><span class="comment">           </span></span><br><span class="line"><span class="comment">        在scale为1的情况下，device-width = 设备的物理分辨率/devicePixelRatio</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="comment">&lt;!--标题 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;shortcut icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;图片链接&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/图片格式&quot;</span>&gt;</span><span class="comment">&lt;!-- 设置网站小图标 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">        <span class="comment">/* 书写页面样式 */</span></span></span><br><span class="line"><span class="css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span><span class="comment">&lt;!-- 用来引入外部样式文件--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="comment">&lt;!-- 主题部分--&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 书写脚本语言</span></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>HTML</category>
       </categories>
       <tags>
-        <tag>表格</tag>
+        <tag>页面</tag>
       </tags>
   </entry>
   <entry>
@@ -639,21 +821,25 @@
       </tags>
   </entry>
   <entry>
-    <title>稳固HTML第一天（页面初始化分析）</title>
-    <url>/2021/05/31/%E7%A8%B3%E5%9B%BAHTML%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88%E9%A1%B5%E9%9D%A2%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%86%E6%9E%90%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="HTML页面"><a href="#HTML页面" class="headerlink" title="HTML页面"></a>HTML页面</h2><p>1.HTML  超文本标记语言。它是一种标志性语言，非编程语言，不能使用逻辑运算。通过标签将网上的文档格式进行统一，使分散的网络资源链接为一个逻辑整体。</p>
-<p>1.1 超文本：是一种组织信息方式，通过超级链接将多种媒介关联起来。</p>
-<p>1.2 标记： 标签，用&lt; &gt;包裹的具有一定含义的内容。</p>
-<p>2.HTML页面初始化分析</p>
-<span id="more"></span>
+    <title>稳固HTML第一天（表格）</title>
+    <url>/2021/05/31/%E7%A8%B3%E5%9B%BAHTML%E7%AC%AC%E4%B8%80%E5%A4%A9%EF%BC%88%E8%A1%A8%E6%A0%BC%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><h3 id="1-1绘制基本表格"><a href="#1-1绘制基本表格" class="headerlink" title="1.1绘制基本表格"></a>1.1绘制基本表格</h3><span id="more"></span>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="comment">&lt;!--申明 下面的代码将由HTML5规范去解析--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span><span class="comment">&lt;!-- lang : language 语言 en：English 这里表达的是这个页面是英文页面 zh：为中文页面--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> <span class="comment">&lt;!-- 头部标签，主要用来完成一个网页的相关设置--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- meta 元，主要用于完成对应设置--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span> <span class="comment">&lt;!--设置汉字编码--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="comment">&lt;!-- content内填写网页的搜索关键字--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="comment">&lt;!--content内填写网站的描述内容--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span> <span class="comment">&lt;!-- 这里是针对IE8 进行特别的渲染设置 避免IE8出错--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- viewport 显示器显示网页的大小</span></span><br><span class="line"><span class="comment">         content属性</span></span><br><span class="line"><span class="comment">           --width 和height 指令分别指定视区的逻辑宽度和高度。它们的值可以是以像素为单位的数字，也可以是一个特殊的标记符号</span></span><br><span class="line"><span class="comment">           --initial-scale用于设置Web页面的初始缩放比例。设为1.0则显示未经缩放的Web页面</span></span><br><span class="line"><span class="comment">           --maximum-scale和minimum-scale用于设置用户对于Web页面缩放比例的限制。值的范围为0.25~10.0之间</span></span><br><span class="line"><span class="comment">           --user-scalable指定用户是否可以缩放视区，即缩放Web页面的视图。值为yes时允许用户进行缩放，值为no时不允许缩放</span></span><br><span class="line"><span class="comment">           </span></span><br><span class="line"><span class="comment">        在scale为1的情况下，device-width = 设备的物理分辨率/devicePixelRatio</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="comment">&lt;!--标题 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;shortcut icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;图片链接&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/图片格式&quot;</span>&gt;</span><span class="comment">&lt;!-- 设置网站小图标 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">        <span class="comment">/* 书写页面样式 */</span></span></span><br><span class="line"><span class="css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span><span class="comment">&lt;!-- 用来引入外部样式文件--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="comment">&lt;!-- 主题部分--&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 书写脚本语言</span></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- table 表格 主要用于呈现格式化数据 表格是由行和列组成</span></span><br><span class="line"><span class="comment">         格式：</span></span><br><span class="line"><span class="comment">            &lt;table&gt;</span></span><br><span class="line"><span class="comment">                 &lt;tr&gt;</span></span><br><span class="line"><span class="comment">                     &lt;th&gt;&lt;/th&gt; 表头 主要对下面内容起说明作用 th的内容会自动加粗和居中显示</span></span><br><span class="line"><span class="comment">                     &lt;td&gt;&lt;/td&gt;</span></span><br><span class="line"><span class="comment">                     .......</span></span><br><span class="line"><span class="comment">                 &lt;/tr&gt;</span></span><br><span class="line"><span class="comment">                 .....</span></span><br><span class="line"><span class="comment">            &lt;/table&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            table+tr*2&gt;td&#123;内容$&#125;*3</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">        表格属性：</span></span><br><span class="line"><span class="comment">              1.boder 设置表格边框 默认单位是像素</span></span><br><span class="line"><span class="comment">              2.width 设置表格宽度 默认单位是像素</span></span><br><span class="line"><span class="comment">              3.align 设置表格对齐 left（默认）/center/right</span></span><br><span class="line"><span class="comment">              4.cellpadding 设置单元格间距 </span></span><br><span class="line"><span class="comment">              5.cellspacing 设置像素间隙</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">cellspacing</span>=<span class="string">&quot;0&quot;</span> <span class="attr">cellpadding</span>=<span class="string">&quot;10&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>学号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>住址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>007<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>岳阳<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>008<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>李四<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>长沙<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.imagehub.cc/image/Y7ekU"><img src="https://s1.imagehub.cc/images/2021/05/31/01.png" alt="01.png"></a></p>
+<h3 id="1-2-跨行-跨列"><a href="#1-2-跨行-跨列" class="headerlink" title="1.2 跨行/跨列"></a>1.2 跨行/跨列</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 跨行/跨列属性主要用来绘制复杂表格</span></span><br><span class="line"><span class="comment">        rowspan：跨行</span></span><br><span class="line"><span class="comment">        colspan：跨列</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> <span class="attr">valign</span>=<span class="string">&quot;bottom&quot;</span>&gt;</span>内容区01<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- valign:垂直对齐（top/middle/bottom） --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;3&quot;</span>&gt;</span>内容区03<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;td&gt;内容区01&lt;/td&gt; --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;td&gt;内容区03&lt;/td&gt; --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区01<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;td&gt;内容区03&lt;/td&gt; --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span>&gt;</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>内容区01<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;2&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区02<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容区03<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;3&quot;</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>内容区01<span class="symbol">&amp;nbsp;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.imagehub.cc/image/Y7Or4"><img src="https://s1.imagehub.cc/images/2021/05/31/02.png" alt="02.png"></a></p>
+<h3 id="1-3-完整表单组成"><a href="#1-3-完整表单组成" class="headerlink" title="1.3 完整表单组成"></a>1.3 完整表单组成</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>完整表格<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 完整表格组成 ：caption（标题）、thead（表头）、tbody（表体）、tfoot（表尾）四部分组成 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;600&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">caption</span>&gt;</span>学生信息表<span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>学号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>家庭住址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>备注<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>001<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>TOM*<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>长沙<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>0000000<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>002<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>CAT<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>岳阳<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span>003<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>Mouse<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>222222222<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;4&quot;</span>&gt;</span>附注：*为优秀学生<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tfoot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.imagehub.cc/image/Y71C5"><img src="https://s1.imagehub.cc/images/2021/05/31/03.png" alt="03.png"></a></p>
 ]]></content>
       <categories>
         <category>HTML</category>
       </categories>
       <tags>
-        <tag>页面</tag>
+        <tag>表格</tag>
       </tags>
   </entry>
 </search>
