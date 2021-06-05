@@ -847,4 +847,225 @@
     <url>/2021/06/04/%E8%BA%AB%E4%BD%93%E5%8E%9F%E5%9B%A0%E4%BC%91%E6%81%AF%E4%B8%80%E5%A4%A9%EF%BC%8C%E6%98%8E%E5%90%8E%E4%B8%A4%E5%A4%A9%E5%88%B7%E9%9D%A2%E7%BB%8F/</url>
     <content><![CDATA[]]></content>
   </entry>
+  <entry>
+    <title>HTML与CSS面试题</title>
+    <url>/2021/06/05/HTML%E4%B8%8ECSS%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="HTML-CSS面试题"><a href="#HTML-CSS面试题" class="headerlink" title="HTML+CSS面试题"></a>HTML+CSS面试题</h1><ol>
+<li><p>介绍一下标准的CSS的盒子模型？与低版本IE的盒子模型有什么不同</p>
+<p>标准盒子模型： 宽度=content+border+padding+margin</p>
+<p>低版本的盒子模型：宽度= 内容宽度（content+border+padding）+margin</p>
+<span id="more"></span></li>
+<li><p>CSS哪些属性可以被继承 | 哪些属性不可以被继承</p>
+<p> font-size、font-family、color | border、padding、margin、width、height</p>
+</li>
+<li><p>样式权重 （权重相同，则选择最后出现的样式）</p>
+<p>  !important（10000）&gt;内联样式（1000）&gt;id选择器（100）&gt;类、伪类选择器（10）&gt;标签择器（1）</p>
+<p>（Tips：继承得到的样式的优先级最低）</p>
+</li>
+<li><p>如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">//div:</span><br><span class="line">margin: 0 auto;</span><br><span class="line"></span><br><span class="line">//浮动元素</span><br><span class="line">position: absolute;</span><br><span class="line">left: 50%;</span><br><span class="line">top: 50%;</span><br><span class="line">margin: -50px 0 0 -100px;</span><br><span class="line"></span><br><span class="line">//绝对定位div</span><br><span class="line">position: absolute;</span><br><span class="line">margin: 0 auto;</span><br><span class="line">left: 0;</span><br><span class="line">right: 0;</span><br></pre></td></tr></table></figure></li>
+<li><p>display有哪些值？说明他们的作用？</p>
+<p>inline（默认） –内联</p>
+<p>none –隐藏</p>
+<p>block –块</p>
+<p>table –表格</p>
+<p>list-item –项目列表</p>
+<p>line-block –行内块</p>
+</li>
+<li><p>CSS3新特性</p>
+</li>
+<li><p>解释CSS3的flexbox（弹性盒子布局模型），以及适用场景？</p>
+<p>该布局模型的目的是提供一种更加高效的方式来对容器中的条目进行布局、对齐和分配空间。</p>
+<p>在传统的布局方式中，block布局在垂直方向从上到下依次排列；inline布局 则是在水平方向来排列；而弹性盒子布局没有这样内在的方向限制，由开发人员自由操作</p>
+<p>适用场景：移动前端开发，在Android和ios上也完美支持。</p>
+</li>
+<li><p>用纯CSS创建一个三角形</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">width: 0;</span><br><span class="line">height: 0;</span><br><span class="line">border-top: 40px solid transparent;</span><br><span class="line">border-left: 40px solid transparent;</span><br><span class="line">border-right: 40px solid transparent;</span><br><span class="line">border-bottom: 40px solid #ff0000;</span><br><span class="line"></span><br><span class="line">//transparent 使其透明</span><br></pre></td></tr></table></figure></li>
+<li><p>为什么要初始化CSS样式？</p>
+<p>因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。</p>
+</li>
+<li><p>absolute的containing block（包含块）计算方式跟正常流有什么不同？</p>
+<p>无论哪种，都要先找到其祖先元素最近的position值不为static的元素再判断：</p>
+<p>1.若此元素为inline元素，则containing block为 能包含这个元素生成的第一个和最后一个inline box 的padding box 的最小矩形。</p>
+<p>2.否则，由这个祖先元素的 padding box 构成，如果都找不到，则为initial containing block。</p>
+<p>（Tips：1.static / relative:就是父元素的content box</p>
+<p>​               2.fixed：它的containing block 为当前的可视化窗口 ）</p>
+</li>
+<li><p>CSS中的visibility属性中有个collapse属性值，在不同浏览器下有什么区别？</p>
+<p>当一个元素的visibility属性被设置成collapse后，对于一般的元素，表现和hidden一样</p>
+<p>区别：</p>
+<p>​        1.chrome中，使用collapse值和使用hidden没有区别</p>
+<p>​        2.firefix，opera和IE，使用collapse值和使用display：none没有区别</p>
+</li>
+<li><p>display：none与visibility：hidden的区别？</p>
+<p>前者不显示对应元素，文档布局中不再分配空间 | 后者隐藏对应元素，文档布局仍保留原来的空间。</p>
+</li>
+<li><p>BFC规范的理解</p>
+</li>
+<li><p>为什么会出现浮动和什么时候要清除浮动？清除浮动的方式？</p>
+<p>浮动元素，会脱离文档流，漂浮在文档流的块框上</p>
+<p>浮动带来的问题：</p>
+<ol>
+<li><p>父元素高度无法被撑开，影响与父元素同层级元素</p>
+</li>
+<li><p>与浮动元素同级的非浮动元素会跟随其后</p>
+</li>
+<li><p>如果不是第一个元素浮动，将会影响页面显示的结构</p>
+</li>
+</ol>
+</li>
+<li><p>CSS优化、提高性能的方法有哪些？</p>
+<ol>
+<li><p>避免过度约束</p>
+</li>
+<li><p>避免后代选择器</p>
+</li>
+<li><p>避免链式选择器</p>
+</li>
+<li><p>使用紧凑语法</p>
+</li>
+<li><p>避免不必要的命名空间</p>
+</li>
+<li><p>避免不必要的重复</p>
+</li>
+<li><p>最好使用表示语义的名字，一个好的类名应该是描述他是什么而不是像什么</p>
+</li>
+<li><p>避免！important，可以选择其他选择器</p>
+</li>
+<li><p>尽可能的精简规划，可以合并不同类里的合并规则</p>
+</li>
+</ol>
+</li>
+<li><p>浏览器是怎么样解析CSS选择器的？</p>
+<ol>
+<li><p>CSS选择器的解析是从右向左解析的。因为从左向右解析发现错误需要进行回溯，会损失很多性能，若从右向左，可以在第一步就筛选掉大量不符合条件的最右节点。</p>
+</li>
+<li><p>CSS解析完毕后，需要将解析的结果和DOM树的内容一起分析建立成一颗Render树，最终用来进行绘图。</p>
+</li>
+</ol>
+</li>
+<li><p>在网页中应该使用奇数还是偶数字体？</p>
+<p>使用偶数字体，因为偶数字号相对更容易和web设计的其他部分构成比例关系。有的字体开始只提供了12、14、16px这三个大小的点阵，而13、15、17px时，用的是小一号的点，但是点阵没变，于是略显稀疏。</p>
+</li>
+<li><p>什么是响应式布局？响应式布局设计的基本原理是什么？</p>
+<ol>
+<li><p>响应式网站设计是一个网站能兼容多个终端，而不是每一个终端做一个特定的版本。</p>
+</li>
+<li><p>基本原理是通过媒体查询检测不同的设备尺寸做处理。</p>
+</li>
+<li><p>兼容IE的话 页面的头部必须有meta声明的viewport</p>
+</li>
+</ol>
+</li>
+<li><p>::before和::after中双冒号和单冒号有什么区别？</p>
+<p>单冒号用于CSS3伪类，双冒号用于CSS3伪元素。</p>
+<p>：before和：after两个伪元素，是在CSS2.1里新出现的。起初伪元素的前缀使用的是单冒号语法，但随着Web进化，在CSS3的规范里，伪元素的语法被修改成使用双冒号。</p>
+</li>
+<li><p>你对line-height是如何理解的</p>
+<p>行高是指一行文字的高度，具体说是两行文字间基线的距离</p>
+<p>多行文本垂直居中，需要设置display属性为inline-block</p>
+</li>
+<li><p>如果需要手动画动画，你认为最小时间间隔是多少？</p>
+<p>多数显示屏默认频率是60Hz，理论间隙最小位1/60*1000ms=16.7ms</p>
+</li>
+<li><p>display:inline-block什么时候会显示间隙？</p>
+<ol>
+<li><p>有空格时候会有间隙 解决：移除空格</p>
+</li>
+<li><p>margin正值的时候 解决：margin使用负值</p>
+</li>
+</ol>
+</li>
+<li><p>png、jpg、gif图片格式解释，分别什么时候用，以及webp</p>
+<ol>
+<li><p>png是便携式网络图片，是一种无损数据压缩的格式，优点是：压缩比搞，色彩好，大多数情况可以用</p>
+</li>
+<li><p>jpg是一个针对照片使用的一种失真压缩方法，是一个破坏性压缩，在www上，被用来存储和传输照片的格式</p>
+</li>
+<li><p>gif是一个位图文件格式，以8为色重现真色彩的图像，可以实现动画效果</p>
+</li>
+<li><p>webp格式是谷歌在2010年推出的，压缩略只有jpg的2/3，大小比png小了45%。缺点是压缩的时间更久了，兼容性不好。</p>
+</li>
+</ol>
+</li>
+<li><p>style标签写在body后与body前有什么区别?</p>
+<p>页面加载自上而下，写在body标签后，由于浏览器以逐行方式对HTML文档进行解析，当解析到写在尾部的样式表，会导致浏览器停止之前的渲染，等待加载且解析样式表完成后重新渲染，在windows的IE下可能会出现页面闪烁的情况。</p>
+</li>
+<li><p>CSS的overflow属性定义移除内容区的内容会如何处理？</p>
+<ol>
+<li><p>参数：scroll | 出现滚动条</p>
+</li>
+<li><p>参数：auto | 子元素内容大于父元素时出现滚动条</p>
+</li>
+<li><p>参数：visible | 溢出的内容出现在父元素之外</p>
+</li>
+<li><p>参数：hidden | 溢出隐藏</p>
+</li>
+</ol>
+</li>
+<li><p>阐述一下CSS Sprites</p>
+<p>小精灵图，讲一个页面涉及到的所有图片都包含到一个大图中去，然后利用CSS中的background组合属性进行背景定位，利用CSS Sprites能很好的减少网页的http请求，从而大大的提高页面的性能；减少图片的字节。</p>
+</li>
+<li><p>DOM加载的流程</p>
+<ol>
+<li><p>解析HTML结构</p>
+</li>
+<li><p>加载外部脚本和样式表</p>
+</li>
+<li><p>解析并执行脚本代码</p>
+</li>
+<li><p>DOM树建立完成</p>
+</li>
+<li><p>加载图片等外部文件</p>
+</li>
+<li><p>页面加载完毕</p>
+</li>
+</ol>
+</li>
+<li><p>px、rem、rm</p>
+<ul>
+<li><p>px：px说我是固定的，不会变通</p>
+</li>
+<li><p>em/rem：我们是相对长度，页面布局变我们就变，响应式布局最喜欢我们了</p>
+</li>
+</ul>
+<ol>
+<li><p>px特性：IE无法调整使用px作为单位的字体大小 | 国内大部分使用的IE内核，FireFix能调整px、rem、em | px是相对屏幕分辨率而言的</p>
+</li>
+<li><p>em特性：可以继承父级元素的文字大小且em的值不固定</p>
+</li>
+<li><p>rem特性：集相对大小与绝对大小的优点于一身，既可以修改根元素比例来调整字体，也可以避免字体大小逐层符合的连锁。</p>
+<p>（Tips：不支持rem的浏览器，可以多写一个绝对单位声明，浏览器会自动忽视rem设定的字体大小）</p>
+</li>
+</ol>
+</li>
+<li><p>link与@import的区别</p>
+</li>
+<li><p>从属关系的区别：</p>
+<ul>
+<li>@import是CSS提供的语法规则，只有导入CSS样式表的功能</li>
+<li>link是HTML提供的标签，不仅加载CSS，还可以定义RSS、rel、连接属性等</li>
+</ul>
+</li>
+<li><p>加载顺序的区别</p>
+<p>加载页面时，link引入的CSS同时被加载 | @import引入的CSS在页面加载完后加载</p>
+</li>
+<li><p>兼容性区别</p>
+<p>@import在CSS2.1才有，IE5+才能识别；link属于HTML标签，不存在兼容问题</p>
+</li>
+<li><p>DOM可操作性区别</p>
+<p>DOM可以通过js操作link来改变样式，但是DOM是基于文档的，无法通过@import改变样式</p>
+</li>
+<li><p>权重区别</p>
+<p>link &gt; @import 的样式</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>HTML、CSS</tag>
+      </tags>
+  </entry>
 </search>
