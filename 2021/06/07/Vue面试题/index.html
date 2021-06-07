@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Vue面试题 Vue的核心是什么 Vue是一套构建用户界面的渐进式自底向上增量开发的MVVM框架，Vue的核心是只关注视图层 核心思想：  核心驱动 ：视图的内容随着数据的改变而改变  组件化：可以增加代码的复用性，可维护性，可测试性，提高开发效率，方便重复使用，体现了高内聚低耦合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue面试题">
+<meta property="og:url" content="http://example.com/2021/06/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="rui的个人博客">
+<meta property="og:description" content="Vue面试题 Vue的核心是什么 Vue是一套构建用户界面的渐进式自底向上增量开发的MVVM框架，Vue的核心是只关注视图层 核心思想：  核心驱动 ：视图的内容随着数据的改变而改变  组件化：可以增加代码的复用性，可维护性，可测试性，提高开发效率，方便重复使用，体现了高内聚低耦合">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-07T10:02:17.000Z">
+<meta property="article:modified_time" content="2021-06-07T10:03:58.575Z">
+<meta property="article:author" content="rui576">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/06/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Vue面试题 | rui的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">rui的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rui576">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rui的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue面试题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-07 18:02:17 / 修改时间：18:03:58" itemprop="dateCreated datePublished" datetime="2021-06-07T18:02:17+08:00">2021-06-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/06/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Vue面试题"><a href="#Vue面试题" class="headerlink" title="Vue面试题"></a>Vue面试题</h1><ol>
+<li><p>Vue的核心是什么</p>
+<p>Vue是一套构建用户界面的渐进式自底向上增量开发的MVVM框架，Vue的核心是只关注视图层</p>
+<p>核心思想：</p>
+<ul>
+<li><p>核心驱动 ：视图的内容随着数据的改变而改变</p>
+</li>
+<li><p>组件化：可以增加代码的复用性，可维护性，可测试性，提高开发效率，方便重复使用，体现了高内聚低耦合</p>
+<span id="more"></span></li>
+</ul>
+</li>
+<li><p>简述你对Vue的理解</p>
+<p>Vue是一套构建用户界面的渐进式自底向上增量开发的MVVM框架，Vue的核心是只关注视图层，是为了解决数据绑定问题，为了开发大型单页面应用和组件化，所以Vue的核心思想是数据驱动和组件化，还有它的MVVM思想，模型 视图 vm是v和m连接的桥梁，当模型数据层修改时，VM层会检测到，并通知视图层进行相应修改。</p>
+</li>
+<li><p>简述Vue单向数据流</p>
+<ul>
+<li><p>父级prop的更新会向下流动到子组件，每次父组件发生更新，子组件所有的prop都会刷新为最新的值</p>
+</li>
+<li><p>数据从父组件传递给子组件，只能单向绑定，子组件内部不能直接修改父组件传递过来的数据（Tips：可以使用data和computed解决）</p>
+</li>
+</ul>
+</li>
+<li><p>Vue常用的修饰符有哪些</p>
+<ol>
+<li>修饰符：<ul>
+<li>.lazy 改变后触发，光标离开input输入框的时候值才会改变</li>
+<li>.number 将输出字符串转换为number类型</li>
+<li>.trim 自动过滤用户输入的首尾空格</li>
+</ul>
+</li>
+<li>事件修饰符：<ul>
+<li>.stop 阻止点击事件冒泡，相当于原生js中的event.stopPropagation（）</li>
+<li>.prevent 防止执行预设的行为，相当于原生js中event.preventDefault()</li>
+<li>.capture 添加事件侦听器时使用事件捕获模式，就是谁有该事件修饰符，就谁先触发</li>
+<li>.self 只会触发自己范围内的事件，不包括子元素</li>
+<li>.once 只执行一次</li>
+</ul>
+</li>
+<li>键盘修饰符：<ul>
+<li>.enter 回车键</li>
+<li>.tab 指标建</li>
+<li>.esc 返回键</li>
+<li>.space 空格键</li>
+<li>.up 向上键</li>
+<li>.dowm 向下键</li>
+<li>.left 向左键</li>
+<li>.right 向右键</li>
+</ul>
+</li>
+<li>系统修饰符<ul>
+<li>.ctrl | .alt | .shift | .meta</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>v-text与 { { } } 与v-html的区别</p>
+<ol>
+<li><p> { { } } 将数据解析为纯文本，不能显示输出html，数据渲染得数据比较多的时候，可能会把大括号显示出来，俗称屏幕闪动</p>
+</li>
+<li><p>v-html 可以渲染出html</p>
+</li>
+<li><p>v-text 将数据解析为纯文本，不能输出真正的html，与花括号的区别是，在页面加载时不显示花括号</p>
+</li>
+<li><p>v-text的作用是操作网页元素中的纯文本内容。花括号是他的另一种写法</p>
+</li>
+<li><p>v-text与花括号写法等价，花括号叫模板插值，v-text叫指令。</p>
+</li>
+</ol>
+</li>
+<li><p>v-on可以绑定多个方法吗</p>
+<p>可以，如果绑定多个事件，可以用键值对的形式，事件类型：事件名，且绑定多个事件的时候，直接用逗号分隔就行</p>
+</li>
+<li><p>Vue循环的key作用</p>
+<p>key值的存在保证了唯一性，Vue在执行时，会对节点进行检查，如果没有key值，那么Vue检查到这里有dom节点，就会对内容清空并赋新值，如果有key值存在，那么会对新老节点进行对比，比较两者的key是否相同，进行调换位置或删除操作。</p>
+</li>
+<li><p>什么是计算属性</p>
+<ul>
+<li>计算属性是用来声明式的描述一个值依赖了其他的值，当它依赖的这个值发生改变时，就更新DOM</li>
+<li>当在模板中把数据绑定到一个计算属性上时，vue会在它依赖的任何值导致该计算属性改变时更新DOM</li>
+<li>每个计算属性都包括一个getter和setter，读取时触发getter，修改时触发setter</li>
+</ul>
+</li>
+<li><p>Vue单页面的优缺点</p>
+<ul>
+<li><p>优点：前后端分离，用户体验好，快，内容改变不需要重新加载整个页面</p>
+</li>
+<li><p>缺点：不利于seo，初次加载时间耗时长，页面复杂度提高了，导航不可用</p>
+</li>
+</ul>
+</li>
+<li><p>Vuex是什么？怎么使用？在哪种场景下使用？</p>
+<ol>
+<li><p>Vuex是一个专门为vue.js应用程序开发的状态管理模式，通过创建一个集中的数据存储，方便程序中所有的组件进行访问，简单来说Vuex就是vue的状态管理工具</p>
+</li>
+<li><p>Vuex有五个属性 state getters mutations actions modules</p>
+<ul>
+<li>state 就是数据源存放地，对应一般vue对象的data，state里面存放的数据是响应式的，state数据发生改变，对应这个数据的组件也会发生改变，用this.$store.state.xxx调用</li>
+<li>getters 相当于store的计算属性，主要是对state中的数据的过滤，用this.$store.getters.xxx调用</li>
+<li>Mutations 处理数据逻辑的方法全部放在mutations中，当触发事件想改变state数据的时候使用mutations,用this.$store.commit调用，给这个方法添加一个参数，就是mutation的荷载（payload）</li>
+<li>Actions 异步操作数据，但是是通过mutation来操作，用this.$store.dispatch来触发，actions也支持荷载</li>
+<li>modules 模块化Vuex，可以让每个模块都有自己的五个属性</li>
+</ul>
+</li>
+<li><p>使用场景：组件之间的状态，登录状态，加入购物车，音乐播放</p>
+</li>
+<li><p>Vuex使用流程</p>
+<ol>
+<li>下载vuex</li>
+<li>在src下创建store以及index.js</li>
+<li>引入vue和vuex，使用vuex，导出实例对象</li>
+<li>在main.js中引入，在.vue文件中使用</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Vue中路由跳转方式</p>
+<p>Vue中路由跳转有两种，分别是声明式和编程式</p>
+<ol>
+<li><p>用js方式跳转叫编程式，this.&amp;router.push()</p>
+</li>
+<li><p>用router-link进行跳转的角声明式 ，router-view 路由出口，路由模板显示的位置</p>
+</li>
+</ol>
+</li>
+<li><p>路由中的name属性有什么作用？</p>
+<p>在router-link中使用name导航到对应路由，使用name导航的同时，给字路由传递参数</p>
+</li>
+<li><p>Vue跨域的解决方式</p>
+<ol>
+<li><p>后台更改header</p>
+</li>
+<li><p>使用jq提供jsonp</p>
+</li>
+<li><p>用http-proxy-middleware（配置代理服务器的中间件）</p>
+</li>
+</ol>
+</li>
+<li><p>Vue的生命周期</p>
+<p>Vue的声明周期就是vue实例创建到实例销毁的过程，期间会有8个钩子函数的调用</p>
+<ol>
+<li><p>beforeCreate 创建实例</p>
+</li>
+<li><p>created 创建完成</p>
+</li>
+<li><p>beforeMount 开始创建模板</p>
+</li>
+<li><p>mounted 创建完成</p>
+</li>
+<li><p>beforeUpdata 开始更新</p>
+</li>
+<li><p>updated 更新完成</p>
+</li>
+<li><p>beforeDestory 开始销毁</p>
+</li>
+<li><p>destoryed 销毁完成</p>
+</li>
+</ol>
+</li>
+<li><p>Vue生命周期的作用</p>
+<p>给了用户在不同阶段添加自己代码的机会</p>
+</li>
+<li><p>DOM渲染在哪个生命周期阶段内完成</p>
+<p>DOM渲染在mounted周期中就已经完成</p>
+</li>
+<li><p>Vue路由的实现</p>
+<p>前端路由就是更新视图但是不请求页面，利用锚点完成切换，页面不会刷新，官方推荐用vue-router.js来引入路由模块</p>
+<ol>
+<li><p>定义路由组件</p>
+</li>
+<li><p>定义路由，使用conponent进行路由映射组件，用name导航到对应的路由</p>
+</li>
+<li><p>创建router实例，传入routes配置</p>
+</li>
+<li><p>创建和挂在根实例</p>
+</li>
+<li><p>容router-link设置路由跳转</p>
+</li>
+</ol>
+</li>
+<li><p>Vue路由模式hash和history</p>
+<ul>
+<li><p>Hash模式地址栏中有#，history没有，hostory模式下会刷新，出现404情况，需要后台配置</p>
+</li>
+<li><p>使用javascript来对loaction.hash进行赋值，改变URL的hash值</p>
+</li>
+<li><p>可以使用hashchange事件来监听hash值的变化</p>
+</li>
+<li><p>HTML5提供了History API来实现URl的变化。其中最主要的API有以下两个：history.pushState() 和 history.repalceState()。这两个API可以在不进行刷新的情况下，操作浏览器的历史记录，唯一不同的是，前者是新增一个历史记录，后者是直接替换当前的历史记录</p>
+</li>
+</ul>
+</li>
+<li><p>Vue路由传参的两种方式，params和query的区别</p>
+<p>动态路由也可以叫路由传参，就是根据不同的选择在同一个组件渲染不同的内容</p>
+<ul>
+<li><p>用法上：query用path引入，params用name引入，接受参数都是类似的，分别是this.$route.query.name 和 this.$route.params.name</p>
+</li>
+<li><p>url展示上：params类似于post，query类似于get，也就是安全问题，params传值相对安全点，刷新后，页面就不在了</p>
+</li>
+</ul>
+</li>
+<li><p>Vue数据绑定的几种方法</p>
+<ol>
+<li><p>单向绑定 双大括号  html内字符串绑定</p>
+</li>
+<li><p>v-bind绑定  html属性绑定</p>
+</li>
+<li><p>双向绑定 v-model</p>
+</li>
+<li><p>一次性绑定 v-once依赖于v-model</p>
+</li>
+</ol>
+</li>
+<li><p>Vue注册一个全局组件</p>
+<p>Vue.componnet(“组件的名字”{</p>
+<p>对象 </p>
+<p>template </p>
+<p>&lt; div&gt;组件的内容&lt; /div&gt;</p>
+<p>})</p>
+</li>
+<li><p>Vue的路由钩子函数 / 路由守卫有哪些</p>
+<ol>
+<li><p>全局守卫：beforeEach（to，from，next）和afterEach（to，from）</p>
+</li>
+<li><p>路由独享守卫：beforeEnter</p>
+</li>
+<li><p>组件内的守卫</p>
+<ul>
+<li><p>beforeRouterEnter 路由进入</p>
+</li>
+<li><p>update 更新</p>
+</li>
+<li><p>leave 离开之前</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Vue中的指令有哪些</p>
+<ul>
+<li><p>v-for：循环数组，对象，字符串，数字</p>
+</li>
+<li><p>v-on：绑定事件监听</p>
+</li>
+<li><p>v-bind：动态绑定一个或者多个属性</p>
+</li>
+<li><p>v-model：表单控件或者组件上创建双向绑定</p>
+</li>
+<li><p>v-if | v-else | v-else-if ：条件渲染</p>
+</li>
+<li><p>v-show：根据表达式真假，切换元素的display</p>
+</li>
+<li><p>v-html：更新元素的innerhtml</p>
+</li>
+<li><p>v-text：更新元素的textcontent</p>
+</li>
+<li><p>v-pre：跳过这个元素和子元素的编译过程</p>
+</li>
+<li><p>v-clock：这个指令保持在元素上直到关联实例结束编译 </p>
+</li>
+<li><p>v-once：只渲染一次</p>
+</li>
+</ul>
+</li>
+<li><p>Vue如何定义一个过滤器</p>
+<p>过滤器本质就是一个有参数有返回值的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">   filters:&#123;</span><br><span class="line">      myCurrency:function(myInput)&#123;</span><br><span class="line">         return 处理后的数据</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用方法：&lt; h1&gt; { { 表达式 | 过滤器 } } &lt; /h1&gt;<br>过滤器高级用法：可以指定参数，告诉过滤器按照参数进行数据的过滤</p>
+</li>
+<li><p>对Vue中keep-alive的理解</p>
+<ul>
+<li><p>概念：leep-alive是vue的内置组件，当它动态包裹组建时，会缓存不到活动的组件实例，它自身不会渲染成一个DOM元素也不会出现在父组件链中</p>
+</li>
+<li><p>作用：在组件切换过程中，将状态保存在内存中，防止重复渲染DOM，减少加载时间以及性能消耗，提高用户体验</p>
+</li>
+<li><p>生命周期函数：Activated 在 keep-alive 组件激活时调用，deactivated在 keep-alive 组件停用时调用</p>
+</li>
+</ul>
+</li>
+<li><p>如何让组件中的css在当前组件生效</p>
+<p>在styled中加上scoped</p>
+</li>
+<li><p>MVVM与MVC的区别</p>
+<ul>
+<li><p>MVC模型视图控制器，视图是可以直接访问模型的，所以视图里会包含模型信息，MVC关注的是模型不变，所以，在mvc中，模型不依赖视图，但是视图以来模型</p>
+</li>
+<li><p>MVVM模型 视图 和VM ，VM作为视图和模型的桥梁，当模型层数据改变，VM会检测到并通知视图层进行相应的修改</p>
+</li>
+</ul>
+</li>
+<li><p>Vue组件中的data为什么是函数</p>
+<p>Data是一个函数时，每个组件实例都有自己的作用域，每个实例相互独立不会互相影响，如果是引用类型（对象），当多个组件共用一个数据源时，一处数据改变，所有的组件数据都会改变，所以要利用函数通过return返回对象的拷贝，（返回一个新数据），让每个实例都有自己的作用域，相互不影响</p>
+</li>
+<li><p>Vue双向绑定的原理</p>
+<p>Vue双向绑定就是：数据变化更新视图，视图变化更新数据</p>
+<p>Vue数据双向绑定是通过数据劫持和观察者模式来实现的</p>
+<ul>
+<li><p>数据劫持：object.defineproperty它的目的是：当给属性赋值的时候，程序可以感知到，就可以控制改变属性值</p>
+</li>
+<li><p>观察者模式：当属性发生改变的时候，使用该数据的地方也会发生改变</p>
+</li>
+</ul>
+</li>
+<li><p>Vue中组件怎么传值</p>
+<ul>
+<li>正向：父传子 ：父组件要把传递的数据绑定在属性上，发送，子组件通过props接收</li>
+<li>逆向：子传父：子组件通过this.$emit（自定义事件名，要发送的数据），父组件设置一个监听事件来接受，然后拿到数据</li>
+<li>兄弟：eventbus 中央事件总线</li>
+<li>通过vuex</li>
+</ul>
+</li>
+<li><p>槽口可以放什么内容？放在哪？什么作用？</p>
+<ul>
+<li><p>可以放任意内容，在子组件中使用，是为了将父组件中的子组件模板数据正常显示</p>
+</li>
+<li><p>具名插槽和匿名插槽，说白了就是在组件上的属性，可以在组件元素内使用</p>
+</li>
+<li><p>可以在父组件使用slot-scope从子组件获取数据</p>
+</li>
+</ul>
+</li>
+<li><p>Watch</p>
+<p>Watch的作用是监控一歌值的变化，并调用因为变化需要执行的方法</p>
+</li>
+<li><p>计算属性与Watch的区别</p>
+<p>区别就是计算属性的缓存功能，当无关数据数据改变时，不会重新计算，直接使用缓存中的值</p>
+<ul>
+<li><p>计算属性是用来 声明式的 描述 一个值 依赖了 其他的值，当所依赖的值后者变量发生变化时，计算属性也跟着改变</p>
+</li>
+<li><p>Watch监听是在data中定义的变量，当该变量发生变化时，会触发Watch中的方法</p>
+</li>
+</ul>
+</li>
+<li><p>Vue首屏加载慢的原因，怎么解决的，怎么解决白屏问题</p>
+<p>首屏加载时间慢的原因：第一次加载页面有很多组件数据需要渲染</p>
+<p>解决方法：</p>
+<ol>
+<li>路由懒加载</li>
+<li>ui框架按需加载</li>
+<li>gzip压缩</li>
+</ol>
+<p>解决白屏问题：</p>
+<ol>
+<li><p>使用v-text渲染数据</p>
+</li>
+<li><p>使用花括号语法渲染数据，但是同时使用v-cloak指令（用来保持在元素上直到关联实例结束的时候进行编译），v-cloak要放在什么位置呢？并不需要添加到每个标签，只要在el挂在的标签上添加就可以。</p>
+</li>
+</ol>
+</li>
+<li><p>Vuex中action如何提交给mutation的</p>
+<p>Action函数接收一个与store实例具有相同方法和属性的context对象，可以调用 context.commit 提交一个 mutation，或者通过 context.state和 context.getters 获取 state 和 getters</p>
+</li>
+<li><p>Router与router区别</p>
+<ol>
+<li><p>router是VueRouter的一个对象，通过Vue.use(VueRouter)和VueRouter构造函数得到一个router实例对象，VueRouter这个对象中是一个全局对象，他包含了所有路由和许多关键的对象和属性</p>
+</li>
+<li><p>router是一个跳转的路由对象，每一个路由都会有一个ruter对象，是一个局部对象，可以获取对应的 name,path,params,query 等</p>
+</li>
+</ol>
+</li>
+<li><p>vuex的Mutation特性是？</p>
+<p>更改vuex store中修改状态的唯一办法就是提交mutation，可以在回调函数中修改store中的状态</p>
+</li>
+<li><p>vuex的actions特性是？</p>
+<p>Action 类似于 mutation，不同的是 action 提交的是 mutation，不是直接变更状态，可以包含任意异步操作</p>
+</li>
+<li><p>Vuex中的Getter特性是？</p>
+<p>Getter 可以对 state 进行计算操作，它就是 store 的计算属性，Getter 可以在多组件之间复用，如果一个状态只在一个组件内使用，可以不用 getters</p>
+</li>
+<li><p>Vuex的优势</p>
+<ul>
+<li><p>优点：解决了非父子组件的通信，减少了ajax请求此处，有些可以直接从state中获取</p>
+</li>
+<li><p>缺点：刷新浏览器，vuex中的state会重新变为初识状态，解决办法是vuex-along，得配合计算属性和sessionstorage（临时存储）来实现</p>
+</li>
+</ul>
+</li>
+<li><p>v-for与v-if优先级</p>
+<p>首先不要把v-if和v-for用在同一个元素中，因为后者优先级更高，如果每一个都需要遍历整个数据，将会影响速度。</p>
+</li>
+<li><p>proxy的理解</p>
+<ul>
+<li><p>vue的数据劫持有两个缺点</p>
+<ol>
+<li>无法监听通过索引修改数组的值的变化</li>
+<li>无法监听object也就是对象的值的变化，所以vue2.x中才会有$set属性的存在</li>
+</ol>
+</li>
+<li><p>proxy是es6推出的新api，可以弥补以上两个缺点，所以vue3.x版本用proxy替换了object.defineproperty</p>
+</li>
+</ul>
+</li>
+<li><p>vue3.0是如何变得更快的</p>
+<ol>
+<li>diff方法优先：vue2.x中的虚拟dom是进行全量对比</li>
+<li>Vue3.0新增了静态标记（PatchFlag）</li>
+<li>Vue2.x无论元素是否参与更新，每次都会重新创建，vue3.0对不参与更新的元素，只会被创建一次，之后会在每次渲染时候被不停的复用</li>
+<li>cacheHandlers事件侦听器缓存，默认情况下onClick会被视为动态绑定，所以每次都会去追踪它的变化，但是是因为是同一个函数，所以没有追踪变化，直接缓存起来复用即可</li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue/" rel="tag"><i class="fa fa-tag"></i> Vue</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="prev" title="微信小程序面试题">
+      <i class="fa fa-chevron-left"></i> 微信小程序面试题
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">Vue面试题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rui576"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rui576</p>
+  <div class="site-description" itemprop="description">个人学习记录博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rui576" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rui576" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2257293298@qq.com" title="E-Mail → mailto:2257293298@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rui576</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共22.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'scS2CX1PccjY1BjTuFQX3VrO-gzGzoHsz',
+      appKey     : 'EDtnhSK396wWDDsn5VioxJi5',
+      placeholder: "是否要评论什么~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
