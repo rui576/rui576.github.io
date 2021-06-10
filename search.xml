@@ -2519,4 +2519,141 @@
 </ol>
 ]]></content>
   </entry>
+  <entry>
+    <title>稳固JS第二天</title>
+    <url>/2021/06/10/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E4%BA%8C%E5%A4%A9/</url>
+    <content><![CDATA[<h1 id="稳固Javascript第二天"><a href="#稳固Javascript第二天" class="headerlink" title="稳固Javascript第二天"></a>稳固Javascript第二天</h1><ol>
+<li><h3 id="Javascript流程控制-循环"><a href="#Javascript流程控制-循环" class="headerlink" title="Javascript流程控制-循环"></a>Javascript流程控制-循环</h3><ol>
+<li><p>循环</p>
+<p>在实际问题中，有许多具有规律性的重复操作，因此在程序中要完成这类操作就需要重复执行某些语句</p>
+<p>在JS中，主要有三种类型的循环语句：</p>
+<ul>
+<li><p>for循环</p>
+</li>
+<li><p>while循环</p>
+</li>
+<li><p>do….while循环</p>
+<span id="more"></span></li>
+</ul>
+</li>
+<li><p>for循环</p>
+<p>在程序中，一组被重复执行的语句被称之为循环体，能否继续重复执行，取决于循环的终止条件。由循环体及循环的终止条件组成的语句，被称之为循环语句</p>
+<ul>
+<li>for 重复执行某些代码，通常跟计数有关系</li>
+<li>初始化变量：就是用var 声明一个普通变量，通常作为计数器使用</li>
+<li>条件表达式：就是用来决定每一次循环是否继续进行，就是终止的条件</li>
+<li>操作表达式：是每次循环最后执行的代码，经常用于我们计数器变量进行更新</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//语法结构</span></span><br><span class="line"><span class="keyword">for</span>(初始化变量; 条件表达式; 操作表达式)&#123;</span><br><span class="line">    <span class="comment">//循环体</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">for循环的执行过程</span></span><br><span class="line"><span class="comment">1.首先执行里面的计数器变量 var i=1. 但是这句话在for循环里只执行一次</span></span><br><span class="line"><span class="comment">2.去 i&lt;100 来判断是否满足条件，如果满足条件 就去执行循环体，不满足则退出循环</span></span><br><span class="line"><span class="comment">3.最后去执行i++ 如果写的是++1，结果也是一样，因为这个东西用;隔开了，是单独执行的</span></span><br><span class="line"><span class="comment">-------第一轮结束-------</span></span><br><span class="line"><span class="comment">4.接着执行i&lt;100，满足条件执行循环体，不满足退出循环</span></span><br><span class="line"><span class="comment">5.执行i++</span></span><br><span class="line"><span class="comment">..................知道i&gt;=100，不满足i&lt;100的条件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//案例1：求1-100之间所有整数的累加和</span></span><br><span class="line">        <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">            num += i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(num);</span><br><span class="line"><span class="comment">//案例2：要求用户输入班级人数，之后一次输入每个学生的成绩，最后打印出该班级总的成绩以及平均成绩</span></span><br><span class="line">        <span class="keyword">var</span> people = prompt(<span class="string">&quot;请输入你们班级的人数&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> grade = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">var</span> all=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=people;i++)&#123;</span><br><span class="line">            grade = prompt(<span class="string">&#x27;请输入第&#x27;</span>+i+<span class="string">&quot;个同学的成绩&quot;</span>);</span><br><span class="line">            all += grade*<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;班级总成绩为:&quot;</span>+all+<span class="string">&quot;班级平均成绩为&quot;</span>+all/people);</span><br></pre></td></tr></table></figure></li>
+<li><p>双重for循环</p>
+<ul>
+<li>很多情况下，单层for循环并不能，满足我们的要求，有时可以通过循环嵌套来实现</li>
+<li>循环嵌套是指在一个循环语句中再定义一个循环语句的语法结构，例如在for循环语句中，可以再嵌套一个for循环，这样的for循环语句我们称之为双重for循环</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//语法结构</span></span><br><span class="line"><span class="keyword">for</span>(外层的初始化变量;外层的条件表达式;外层的操作表达式)&#123;</span><br><span class="line">    <span class="keyword">for</span>(里层的初始化变量;里层的条件表达式;里层的操作表达式)&#123;</span><br><span class="line">        <span class="comment">//执行语句</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.我们可以把里面的循环看成是外层循环的语句</span></span><br><span class="line"><span class="comment">2.外层的循环循环一次，里面的循环执行全部</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//打印五行五列星星</span></span><br><span class="line">        <span class="keyword">var</span> str=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">1</span>;j&lt;=<span class="number">5</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">5</span>;i++)&#123;</span><br><span class="line">            str +=<span class="string">&#x27;※&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        str +=<span class="string">&#x27;\n&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(str);</span><br><span class="line"><span class="comment">//打印倒三角</span></span><br><span class="line">        <span class="keyword">var</span> str=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(j=i;j&lt;=<span class="number">10</span>;j++)&#123;</span><br><span class="line">                str +=<span class="string">&quot;※&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            str +=<span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(str);</span><br><span class="line"><span class="comment">//打印9x9乘法表</span></span><br><span class="line">        num = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">1</span>;j&lt;=i;j++)&#123;</span><br><span class="line">                num += <span class="string">&quot; &quot;</span>+j+<span class="string">&quot;x&quot;</span>+i+<span class="string">&#x27;=&#x27;</span>+(i*j)+<span class="string">&#x27;&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">            num +=<span class="string">&quot;\n&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(num);</span><br></pre></td></tr></table></figure></li>
+<li><p>while循环</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//while 语法结构  当.....的时候</span></span><br><span class="line"><span class="keyword">while</span>(条件表达式)&#123;</span><br><span class="line">    <span class="comment">//循环体</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//执行思路 当条件表达式结果为true，则执行循环体 否则退出循环</span></span><br><span class="line"><span class="comment">//里面应该也要有操作表达式 完成计数器的更新 防止死循环</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//案例：弹出一个提示框：你爱我吗 如果输入我爱你，就结束，否则一直询问</span></span><br><span class="line">    <span class="keyword">var</span> love =<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">while</span>(love!==<span class="string">&quot;我爱你&quot;</span>)&#123;</span><br><span class="line">        love = prompt(<span class="string">&quot;你爱我吗&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    alert(<span class="string">&quot;我也爱你&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>do while循环</p>
+<ul>
+<li><p>do …while 其实是while语句的一个变体。该循环会先执行一次代码块，然后对条件表达式进行判断，如果条件为真，就会重复执行循环体，否则退出循环</p>
+</li>
+<li><p>1</p>
+</li>
+<li><p>1</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//语法结构</span></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    <span class="comment">//循环体</span></span><br><span class="line">&#125;<span class="keyword">while</span>(条件表达式)</span><br><span class="line">    </span><br><span class="line"><span class="comment">//执行思路：与while不同的地方在鱼，这个先执行一次循环体，再判断条件</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>continue break </p>
+<ol>
+<li><p>continue关键字</p>
+<ul>
+<li>用于立即跳出本次循环，继续下一次循环(本次循环体中有continue之后的代码就会少执行一次)</li>
+</ul>
+</li>
+<li><p>break关键字</p>
+<ul>
+<li>用于立即跳出整个循环</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h3 id="javascript数组"><a href="#javascript数组" class="headerlink" title="javascript数组"></a>javascript数组</h3><ol>
+<li><p>数组的概念</p>
+<ol>
+<li><p>什么是数组？</p>
+<p>数组是指一组数据的集合，其中每个数据被称作元素，在数组中可以存放任意类型的元素。数组是一种将一组数据存储在单个变量名下的优雅方式</p>
+</li>
+</ol>
+</li>
+<li><p>创建数组</p>
+<ol>
+<li><p>数组的创建方式</p>
+<p>数组有两种创建方式</p>
+<ul>
+<li><p>利用new创建数组</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();<span class="comment">//创建一个空的数组</span></span><br></pre></td></tr></table></figure></li>
+<li><p>利用数组字面量创建数组</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = []; <span class="comment">//创建了一个空的数组</span></span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">&quot;hxr&quot;</span>,<span class="literal">true</span>];</span><br><span class="line"><span class="comment">//数组里面的数据一定用逗号分隔，数组里面的数据，我们称为数组元素</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.数组的字面量是方括号[]</span></span><br><span class="line"><span class="comment">2.声明数组并赋值称为数组的初始化</span></span><br><span class="line"><span class="comment">3.这种字面量方法也是我们以后最多使用的方法</span></span><br><span class="line"><span class="comment">4.数组中可以存放任意类型的数据</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>获取数组中的元素</p>
+<p>数组的索引</p>
+<ul>
+<li>索引（下标）：用来访问数组元素的序号（数组下标从0开始）</li>
+<li>数组可以通过索引来访问（得到）、设置、修改对应的数组元素，我们可以通过“数组名[索引]”的形式来获取数组中的元素</li>
+<li>没有这个数组元素，会输出undefined</li>
+</ul>
+</li>
+<li><p>遍历数组</p>
+<p>遍历：就是把数组中的每个元素从头到尾都访问一次（类似点名）</p>
+<ol>
+<li><p>数组的长度</p>
+<ul>
+<li><p>使用”数组名.length”可以访问数组元素的数量（数组长度），动态检测数组的元素个数</p>
+</li>
+<li><p>数组长度是元素个数，不要和索引号弄混淆</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//示例1</span></span><br><span class="line">        <span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">var</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">            sum += arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(sum);</span><br><span class="line">        <span class="built_in">console</span>.log(sum/arr.length);</span><br><span class="line"><span class="comment">//示例2：求数组[2,6,1,77,52,57,7]的最大值</span></span><br><span class="line">        <span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">77</span>,<span class="number">52</span>,<span class="number">57</span>,<span class="number">7</span>];</span><br><span class="line">        <span class="keyword">var</span> num = arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(num&lt;arr[i])&#123;</span><br><span class="line">                num = arr[i]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(num);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>数组中新增元素</p>
+<ol>
+<li><p>通过修改length长度来新增数组元素</p>
+<ul>
+<li>可以通过修改length长度来实现数组扩容的目的</li>
+<li>length属性是可以读写的</li>
+</ul>
+</li>
+<li><p>通过修改数组索引新增数组元素</p>
+<ul>
+<li><p>可以通过修改数组索引的方式追加数组元素</p>
+</li>
+<li><p>不要直接给数组名赋值，这样会覆盖之前的元素</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//案例：新建一个数组，里面存放十个整数</span></span><br><span class="line">        <span class="keyword">var</span> arr = [];</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            arr[i]=i+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>数字案例</p>
+<ol>
+<li><p>删除指定数组元素</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//案例1：将数组[.........]中的0去掉后，形成一个不包含0的新数组        var arr = [2,0,6,1,77,0,52,0,25,7];        var arr2=[];        for (var i = 0;i &lt;arr.length;i++) &#123;            if(arr[i]!==0)&#123;                arr2[arr2.length]=arr[i]            &#125;        &#125;        console.log(arr2);</span></span><br></pre></td></tr></table></figure></li>
+<li><p>翻转数组</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//案例2：将数组[.......]的内容反过来存放        var arr = [2,0,6,1,77];        var arr2=[];        for (var i =arr.length-1;i&gt;=0;i--) &#123;                arr2[arr2.length]=arr[i]        &#125;        console.log(arr2);</span></span><br></pre></td></tr></table></figure></li>
+<li></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+  </entry>
 </search>
