@@ -2656,4 +2656,159 @@
         <category>JS</category>
       </categories>
   </entry>
+  <entry>
+    <title>稳固JS第三天</title>
+    <url>/2021/06/11/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E4%B8%89%E5%A4%A9/</url>
+    <content><![CDATA[<h1 id="Javascript第三天"><a href="#Javascript第三天" class="headerlink" title="Javascript第三天"></a>Javascript第三天</h1><ol>
+<li><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul>
+<li>冒泡排序是一种简单的排序算法。它重复的走访过要排序的列表，一次比较两个元素，如果他们的顺序错误，就把他们换过来，走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列顶端</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//视频标准写法</span></span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">var</span> arr2=[];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;arr.length-i;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">                arr2[<span class="number">0</span>]=arr[j];</span><br><span class="line">                arr[j]=arr[j+<span class="number">1</span>];</span><br><span class="line">                arr[j+<span class="number">1</span>]=arr2[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//看视频前自己的写法</span></span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">var</span> arr2=[];</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j =arr.length-i;j&gt;<span class="number">0</span>;j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i]&gt;arr[i+num])&#123;</span><br><span class="line">                arr2[<span class="number">0</span>]=arr[i];</span><br><span class="line">                arr[i]=arr[i+num];</span><br><span class="line">                arr[i+num]=arr2[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            num++; </span><br><span class="line">        &#125;</span><br><span class="line">        num = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br><span class="line"><span class="comment">//分析，虽然是实现了，但是代码过于复杂，也比标准的多设了一个变量，对i与j的使用合理性还是需要磨练</span></span><br></pre></td></tr></table></figure></li>
+<li><h3 id="javascript函数"><a href="#javascript函数" class="headerlink" title="javascript函数"></a>javascript函数</h3><ol>
+<li><p>函数的概念</p>
+<ul>
+<li>在JS里面，可能会定义非常多的相同代码或者功能相似的代码，这些代码可能需要大量的重复使用。虽然for循环语句也能实现一些简单的重复操作，但是比较具有局限性，此时我们就可以使用JS中的函数</li>
+<li>函数：就是封装了一段可被重复调用执行的代码块，通过此代码块可以实现大量代码的重复使用</li>
+</ul>
+</li>
+<li><p>函数的使用</p>
+<ul>
+<li><p>函数的使用分为两步：声明函数和调用函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.声明函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> 函数名 （）</span>&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.function声明函数的关键字 全部小写</span></span><br><span class="line"><span class="comment">2.函数是做某些事情，函数名一般是动词</span></span><br><span class="line"><span class="comment">3.函数不调用，自己不会执行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//2.调用函数</span></span><br><span class="line">函数名();</span><br><span class="line"><span class="comment">//调用函数的时候千万不要忘记加小括号</span></span><br></pre></td></tr></table></figure></li>
+<li><p>函数的封装</p>
+<ul>
+<li>函数的封装就是把一个或者多个功能通过函数的方式封装起来，对外只提供一个简单的函数接口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>函数的参数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//我们可以利用函数的参数实现函数重复不同的代码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params">形参<span class="number">1</span>，形参<span class="number">2.</span>...</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">函数名(实参<span class="number">1</span>,实参<span class="number">2.</span>...);</span><br><span class="line"><span class="comment">//函数的参数可以有，也可以没有，个数不限</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>形参：形式上的参数，函数定义的时候，传递的参数，当前并不知道是什么</li>
+<li>实参：实际上的参数，函数调用的时候传递的参数，实参是传递给形参的</li>
+<li>参数的作用：在函数内部某些值不能固定的时候，我们可以通过参数在调用函数时传递不同的值进去</li>
+<li>函数形参和实参个数不匹配的问题<ul>
+<li>如果实参个数和形参个数一致，则正常输出结果</li>
+<li>如果实参个数多于形参个数，会取到形参的个数</li>
+<li>如果实参个数小于形参的个数，个数不够的形参结果就是undefined</li>
+<li>在Javascript中，形参的默认值是undefined</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>函数的返回值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//函数的返回值格式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> 需要返回的结果;</span><br><span class="line">&#125;</span><br><span class="line">函数名();</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.我们的函数只是实现某种功能，最终的结果需要返回给函数的调用者</span></span><br><span class="line"><span class="comment">2.只要函数遇到return，就把后面的结果 返回给函数的调用者 类似于函数名（）=return 后面的结果</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//代码小demo</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getNum</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(num1&gt;num2)&#123;</span><br><span class="line">                <span class="keyword">return</span> num1;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> num2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(getNum(<span class="number">99</span>,<span class="number">100</span>));</span><br><span class="line"><span class="comment">//案例：求一段数组中的最大值</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getArr</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> arrMax=arr[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(arrMax&lt;arr[i])&#123;</span><br><span class="line">                    arrMax=arr[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arrMax;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> re = getArr([<span class="number">5</span>,<span class="number">2</span>,<span class="number">99</span>,<span class="number">101</span>,<span class="number">67</span>,<span class="number">77</span>]);</span><br><span class="line">        <span class="built_in">console</span>.log(re);</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>return终止函数<ul>
+<li>return 之后的代码不被执行</li>
+<li>return 只能返回一个值</li>
+</ul>
+</li>
+<li>函数没有return返回undefined</li>
+</ul>
+</li>
+<li><p>arguments的使用</p>
+<ul>
+<li><p>当不确定有多少个参数传递的时候，可以用arguments来获取，在Javascript中，arguments实际上它是当前函数的一个内置对象。所有函数都内置了一个arguments对象，arguments对象中存储了传递的所有实参。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//arguments的使用 只有函数才有arguments</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="comment">//我们可以按照数组的方式遍历arguments</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fun(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line"><span class="comment">//案例：利用函数，求任意个数的最大值</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getArr</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> arrMax=<span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(arrMax&lt;<span class="built_in">arguments</span>[i])&#123;</span><br><span class="line">                    arrMax=<span class="built_in">arguments</span>[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arrMax;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> re = getArr(<span class="number">5</span>,<span class="number">2</span>,<span class="number">99</span>,<span class="number">101</span>,<span class="number">67</span>,<span class="number">77</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(re);</span><br></pre></td></tr></table></figure></li>
+<li><p>arguments展示形式是一个伪数组，因此可以进行遍历。伪数组具有以下特点：</p>
+<ul>
+<li>具有length属性</li>
+<li>按索引方式存储数据</li>
+<li>不具有数组的push，pop等方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>函数案例</p>
+<ul>
+<li>函数可以调用另外一个函数<ul>
+<li>因为每个函数都是独立的代码块，用于完成特殊任务，因此经常会用到函数相互调用的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>函数的两种声明方式</p>
+<ul>
+<li><p>利用函数关键字自定义函数</p>
+</li>
+<li><p>函数表达式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//函数表达式 （匿名函数）</span></span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">fun();</span><br><span class="line"><span class="comment">//fun 是变量名，不是函数名</span></span><br><span class="line"><span class="comment">//函数表达式声明方式跟声明变量差不多，只不过变量里存的是值，而函数表达式里面存的是函数</span></span><br><span class="line"><span class="comment">//函数表达式也可以进行传递参数</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h3 id="javascript作用域"><a href="#javascript作用域" class="headerlink" title="javascript作用域"></a>javascript作用域</h3><ol>
+<li><p>作用域</p>
+<ul>
+<li>通常来说，一段程序代码中所用到的名字（变量）并不总是有效和可用的，而限定这个名字可用性的代码范围就是这个名字的作用域。作用域的使用提高了程序逻辑的局部性，增强了程序的可靠性，减少名字冲突</li>
+<li>js作用域（ES6）之前：全局作用域和局部作用域<ul>
+<li>全局作用域：整个script标签或者是单独的js文件</li>
+<li>局部作用域：函数内部就是局部作用域，这个代码的名字只在函数的内部起效果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>变量的作用域</p>
+<p>在javascript中，根据作用域的不同，变量可以分为两种</p>
+<ul>
+<li>全局变量：在全局作用域下的变量<ul>
+<li>如果在函数内部没有声明，直接赋值的变量，也属于全局变量</li>
+</ul>
+</li>
+<li>局部变量：在局部作用域下的变量，只能在函数内部使用<ul>
+<li>函数的形参也可以看成局部变量</li>
+</ul>
+</li>
+</ul>
+<p>从执行效率来看全局变量和局部变量</p>
+<ul>
+<li>全局变量：只有浏览器关闭的时候才会销毁，比较占内存资源</li>
+<li>局部变量：当我们程序执行完毕就会销毁，比较节约内存资源</li>
+</ul>
+<p>JS在ES6的时候新增的块级作用域</p>
+</li>
+<li><p>作用域链</p>
+<ul>
+<li>根据在内部函数可以访问外部函数变量的这个机制，用链式查找决定哪些数据能被内部访问，就称为作用域 （就近原则）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h3 id="javascript预解析"><a href="#javascript预解析" class="headerlink" title="javascript预解析"></a>javascript预解析</h3><ol>
+<li><p>预解析</p>
+<ul>
+<li>javaScript代码是由浏览器中的javaScript解析器来执行的，javascript解析器在运行javascript代码的时候分为两步：预解析和代码执行<ul>
+<li>预解析：JS引擎会把js里面所有的var 还有function提升到当前作用域的最前面</li>
+<li>代码执行：按照代码书写的顺序从下往下执行</li>
+</ul>
+</li>
+<li>预解析分为变量预解析（变量提升）和函数预解析（函数提升）<ul>
+<li>变量提升：就是把所有的变量声明提升到当前作用域最前面，且不提升赋值</li>
+<li>函数提升：就是把所有的函数声明提升到当前作用域最前面，且不调用函数</li>
+<li>所以，函数表达式（匿名函数），调用必须写在函数表达式的下面，因为他是var的变量名，是变量提升</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>预解析案例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">f1();</span><br><span class="line"><span class="built_in">console</span>.log(c);</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = b = c=<span class="number">9</span> <span class="comment">//这里可以当成var a=9,然后b=9,c=9会没有声明直接提升到全局</span></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="built_in">console</span>.log(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>今天教室要清考场没时间学啦，这几天弄微信小程序作业去了，10000字哇！~~~</p>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+  </entry>
 </search>
