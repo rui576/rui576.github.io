@@ -2661,7 +2661,8 @@
     <url>/2021/06/11/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E4%B8%89%E5%A4%A9/</url>
     <content><![CDATA[<h1 id="Javascript第三天"><a href="#Javascript第三天" class="headerlink" title="Javascript第三天"></a>Javascript第三天</h1><ol>
 <li><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul>
-<li>冒泡排序是一种简单的排序算法。它重复的走访过要排序的列表，一次比较两个元素，如果他们的顺序错误，就把他们换过来，走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列顶端</li>
+<li><p>冒泡排序是一种简单的排序算法。它重复的走访过要排序的列表，一次比较两个元素，如果他们的顺序错误，就把他们换过来，走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列顶端</p>
+<span id="more"></span></li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//视频标准写法</span></span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">var</span> arr2=[];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;arr.length-i;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">                arr2[<span class="number">0</span>]=arr[j];</span><br><span class="line">                arr[j]=arr[j+<span class="number">1</span>];</span><br><span class="line">                arr[j+<span class="number">1</span>]=arr2[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//看视频前自己的写法</span></span><br><span class="line">    <span class="keyword">var</span> arr = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">var</span> arr2=[];</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j =arr.length-i;j&gt;<span class="number">0</span>;j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i]&gt;arr[i+num])&#123;</span><br><span class="line">                arr2[<span class="number">0</span>]=arr[i];</span><br><span class="line">                arr[i]=arr[i+num];</span><br><span class="line">                arr[i+num]=arr2[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            num++; </span><br><span class="line">        &#125;</span><br><span class="line">        num = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(arr);</span><br><span class="line"><span class="comment">//分析，虽然是实现了，但是代码过于复杂，也比标准的多设了一个变量，对i与j的使用合理性还是需要磨练</span></span><br></pre></td></tr></table></figure></li>
 <li><h3 id="javascript函数"><a href="#javascript函数" class="headerlink" title="javascript函数"></a>javascript函数</h3><ol>
@@ -2810,5 +2811,11 @@
       <categories>
         <category>JS</category>
       </categories>
+  </entry>
+  <entry>
+    <title>请假一天</title>
+    <url>/2021/06/12/%E8%AF%B7%E5%81%87%E4%B8%80%E5%A4%A9/</url>
+    <content><![CDATA[<p>要写微信小程序课程设计啦，一万字，所以今天一天就交给它啦~~~</p>
+]]></content>
   </entry>
 </search>
