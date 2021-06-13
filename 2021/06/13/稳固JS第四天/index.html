@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="稳固JS第四天 javascript对象 对象   现实生活中：万物皆可对象，对象是一个具体的事物，看得见摸得着的实物，一个数据库，一张网页、一个与远程服务器的连接也可以是“对象”  在javascript中，对象是一组无序的相关属性和方法的集合，所有事物都是对象，例如字符串、数值、数组、函数等  属性：事物的特征，在对象中用属性来表示（常用名词） 方法：事物的行为，在对象中用方法来表示（常用动词">
+<meta property="og:type" content="article">
+<meta property="og:title" content="稳固JS第四天">
+<meta property="og:url" content="http://example.com/2021/06/13/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E5%9B%9B%E5%A4%A9/index.html">
+<meta property="og:site_name" content="rui的个人博客">
+<meta property="og:description" content="稳固JS第四天 javascript对象 对象   现实生活中：万物皆可对象，对象是一个具体的事物，看得见摸得着的实物，一个数据库，一张网页、一个与远程服务器的连接也可以是“对象”  在javascript中，对象是一组无序的相关属性和方法的集合，所有事物都是对象，例如字符串、数值、数组、函数等  属性：事物的特征，在对象中用属性来表示（常用名词） 方法：事物的行为，在对象中用方法来表示（常用动词">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-13T14:00:57.000Z">
+<meta property="article:modified_time" content="2021-06-13T14:02:19.167Z">
+<meta property="article:author" content="rui576">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/06/13/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E5%9B%9B%E5%A4%A9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>稳固JS第四天 | rui的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">rui的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/13/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E5%9B%9B%E5%A4%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="rui576">
+      <meta itemprop="description" content="个人学习记录博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rui的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          稳固JS第四天
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-13 22:00:57 / 修改时间：22:02:19" itemprop="dateCreated datePublished" datetime="2021-06-13T22:00:57+08:00">2021-06-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/06/13/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E5%9B%9B%E5%A4%A9/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/13/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E5%9B%9B%E5%A4%A9/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="稳固JS第四天"><a href="#稳固JS第四天" class="headerlink" title="稳固JS第四天"></a>稳固JS第四天</h1><ol>
+<li><h3 id="javascript对象"><a href="#javascript对象" class="headerlink" title="javascript对象"></a>javascript对象</h3><ol>
+<li><p>对象 </p>
+<ul>
+<li><p>现实生活中：万物皆可对象，对象是<strong>一个具体的事物</strong>，看得见摸得着的实物，一个数据库，一张网页、一个与远程服务器的连接也可以是“对象”</p>
+</li>
+<li><p>在javascript中，对象是一组无序的<strong>相关属性</strong>和<strong>方法</strong>的集合，所有事物都是对象，例如字符串、数值、数组、函数等</p>
+<ul>
+<li>属性：事物的特征，在对象中用属性来表示（常用名词）</li>
+<li>方法：事物的行为，在对象中用方法来表示（常用动词）</li>
+</ul>
+</li>
+<li><p>为什么需要对象？</p>
+<ul>
+<li><p>JS中对象表达结构更清晰，更强大。</p>
+<span id="more"></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>创建对象的三种方法</p>
+<ol>
+<li><p>利用字面量创建对象</p>
+<ul>
+<li><p>对象的字面量：就是花括号里面包含了表达这个具体事物（对象）的属性和方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用对象字面量创建对象&#123;&#125;</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;<span class="comment">//创建了一个空的对象</span></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    <span class="attr">uname</span>:<span class="string">&quot;123&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">18</span>,</span><br><span class="line">    <span class="attr">sex</span>:<span class="string">&quot;男&quot;</span>，</span><br><span class="line">    <span class="attr">sayHi</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.里面的属性，我们采取键值对的形式。 键：属性名 值：属性值</span></span><br><span class="line"><span class="comment">2.多个属性或者方法中间用逗号隔开的</span></span><br><span class="line"><span class="comment">3.方法冒号后面跟的是一个匿名函数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2.uname);</span><br><span class="line"><span class="built_in">console</span>.log(obj2[<span class="string">&#x27;age&#x27;</span>]);</span><br><span class="line">obj.sayHi();</span><br><span class="line"><span class="comment">//使用对象</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.1 调用对象的属性，我们采取 对象名.属性名</span></span><br><span class="line"><span class="comment">1.2 对象名[&#x27;属性名&#x27;]</span></span><br><span class="line"><span class="comment">2.1 调用对象的方法sayHi: 对象名.方法名</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+<li><p>变量、属性、函数、方法的区别</p>
+<ul>
+<li>变量和属性的相同点<ul>
+<li>他们都是用来存储数据的</li>
+</ul>
+</li>
+<li>变量和属性的不同点<ul>
+<li>变量：单独声明并赋值，使用的时候直接写变量名，单独存在</li>
+<li>属性：在对象里面的不需要声明，使用的时候必须是对象.属性</li>
+</ul>
+</li>
+<li>函数和方法的相同点<ul>
+<li>都是实现某种功能</li>
+</ul>
+</li>
+<li>函数和方法的不同点<ul>
+<li>函数：是单独声明的，并且调用的函数名（）单独存在</li>
+<li>方法：在对象里面，调用的时候 对象.方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>利用new Object创建对象</p>
+<ul>
+<li><p>跟new Array（）原理一致</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用 new Object创建对象</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">obj.name = <span class="string">&quot;张三丰&quot;</span>;</span><br><span class="line">obj.age = <span class="number">18</span>;</span><br><span class="line">obj.sex = <span class="string">&quot;男&quot;</span>;</span><br><span class="line">obj.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.我们是利用等号 = 赋值的方法，添加对象的属性和方法</span></span><br><span class="line"><span class="comment">2.每个属性和方法之间用分号结束</span></span><br><span class="line"><span class="comment">3.调用属性和之前的字面量创建一致</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//例子：</span></span><br><span class="line">        <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">        obj.name=<span class="string">&quot;鸣人&quot;</span>;</span><br><span class="line">        obj.age = <span class="number">19</span>;</span><br><span class="line">        obj.sex = <span class="string">&quot;男&quot;</span>;</span><br><span class="line">        obj.skill = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;螺旋丸&quot;</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="built_in">console</span>.log(obj);</span><br><span class="line">        obj.skill();</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>利用构造函数创建对象</p>
+<ul>
+<li><p>我们为什么需要使用构造函数</p>
+<ul>
+<li>因为我们前面的两种创建对象的方式，一次只能创建一个对象</li>
+<li>所以我们可以利用函数的方法，重复这些相同的代码，我们就把这个函数称为构造函数</li>
+<li>又因为这个函数不一样，里面封装的不是普通代码，而是对象，所以构造函数就是把我们对象里面一些相同的属性和方法抽象出来封装到函数里面</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用构造函数创建对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> 构造函数名(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.属性 = 值;</span><br><span class="line">    <span class="built_in">this</span>.方法 = <span class="function"><span class="keyword">function</span> （）</span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> 构造函数名();</span><br><span class="line"></span><br><span class="line"><span class="comment">//案例一：创建四大天王</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Star</span>(<span class="params">uname,age,sex</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">this</span>.name=uname;</span><br><span class="line">   <span class="built_in">this</span>.age = age;</span><br><span class="line">   <span class="built_in">this</span>.sex = sex;</span><br><span class="line">   <span class="built_in">this</span>.sing = <span class="function"><span class="keyword">function</span>(<span class="params">sang</span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(sang)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ldh = <span class="keyword">new</span> Star(<span class="string">&quot;刘德华&quot;</span>,<span class="number">18</span>,<span class="string">&quot;男&quot;</span>);</span><br><span class="line">ldh.sing(<span class="string">&quot;冰雨&quot;</span>);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.构造函数名首字母要大写</span></span><br><span class="line"><span class="comment">2.我们构造函数不需要return 就可以返回结果（new关键字来返回）</span></span><br><span class="line"><span class="comment">3.我们调用构造函数 必须使用new</span></span><br><span class="line"><span class="comment">4.我们只要new Star（）调用函数，就创建一个对象</span></span><br><span class="line"><span class="comment">5.我们的属性和方法前面必须添加this</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//案例2：</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Hero</span> (<span class="params">name,type,blood</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.name = name;</span><br><span class="line">            <span class="built_in">this</span>.type = type;</span><br><span class="line">            <span class="built_in">this</span>.bolld = blood;</span><br><span class="line">            <span class="built_in">this</span>.attack = <span class="function"><span class="keyword">function</span> (<span class="params">attack</span>)</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&quot;攻击方式:&quot;</span>+attack);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">var</span> lianpo = <span class="keyword">new</span> Hero(<span class="string">&quot;廉颇&quot;</span>,<span class="string">&#x27;力量型&#x27;</span>,<span class="string">&quot;500血量&quot;</span>);</span><br><span class="line">        lianpo.attack(<span class="string">&quot;近战&quot;</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(lianpo);</span><br><span class="line">        <span class="keyword">var</span> houyi = <span class="keyword">new</span> Hero(<span class="string">&quot;后羿&quot;</span>,<span class="string">&#x27;射手型&#x27;</span>,<span class="string">&quot;100血量&quot;</span>);</span><br><span class="line">        houyi.attack(<span class="string">&quot;远程&quot;</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(houyi);</span><br></pre></td></tr></table></figure></li>
+<li><p>构造函数和对象</p>
+<ul>
+<li>构造函数：如Star()；泛指某一大类，类似于java语言里的类</li>
+<li>对象：如new Star（）；特指某一个</li>
+<li>我们利用构造函数创建对象的过程，也称为对象的实例化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>new关键字</p>
+<ul>
+<li><p>new关键字的执行过程</p>
+<ul>
+<li><p>new 构造函数 可以在内存中创建一个空的对象</p>
+</li>
+<li><p>this 就会指向刚才创建的空对象</p>
+</li>
+<li><p>执行构造函数里面的代码，给这个空对象添加属性的方法</p>
+</li>
+<li><p>返回这个对象（所以构造函数里不需要return）</p>
+<p>（Tips：New和构造函数在一起之后，生了个宝宝，这个宝宝必须是亲身的this指向，孩子长大开始学习知识，往脑子里塞了一堆知识，然后工作赚钱，回报父母）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>遍历对象属性</p>
+<ul>
+<li><p>for…in语句用于对数组或者对象的属性进行循环操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//结构：</span></span><br><span class="line"><span class="keyword">for</span>(变量 <span class="keyword">in</span> 对象)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(变量);<span class="comment">// 变量输出的到是属性名</span></span><br><span class="line">    <span class="built_in">console</span>.log(对象[变量]);<span class="comment">//得到的是属性值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//我们使用 for in里面的变量，我们喜欢用k或者key</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h3 id="Javascript的内置对象"><a href="#Javascript的内置对象" class="headerlink" title="Javascript的内置对象"></a>Javascript的内置对象</h3><ol>
+<li><p>内置对象</p>
+<ul>
+<li>javascript中对象分为三种：自定义对象、内置对象、浏览器对象<ul>
+<li>前两个对象是JS基础内容，属于ECMAScript，第三个浏览器对象属于JS独有</li>
+</ul>
+</li>
+<li>内置对象就是值JS语言自带的一些对象，这些对象供开发者使用，并提供了一些常用的或是最基本而必要的功能（属性和方法）</li>
+<li>内置对象的最大优点就是能帮助我们开发</li>
+</ul>
+</li>
+<li><p>查文档</p>
+<ul>
+<li>MDN<ul>
+<li>学习一个内置对象的使用，只要学会其常用成员的使用即可，我们都可以通过查文档学习。</li>
+<li>Mozilla开发者网络（MDN）提供了有关开放网络技术的信息，包括HTML、CSS、万维网以及HTML5应用的API</li>
+</ul>
+</li>
+<li>如何学习对象中的方法<ul>
+<li>查阅该方法的功能</li>
+<li>查看里面参数的意义和类型</li>
+<li>查看返回值的意义和类型</li>
+<li>通过demo进行测试</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Math对象</p>
+<ul>
+<li><p>Math对象不是一个构造函数，所以我们不需要用new来调用，而是直接使用里面的属性和方法即可</p>
+</li>
+<li><p>调用Math方法时，有无法转换成数字的值，便会返回NaN，如果没放任何值，就会返回-Infinity</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//案例：封装自己的数学对象</span></span><br><span class="line">        <span class="keyword">var</span> obj =&#123;</span><br><span class="line">            <span class="attr">PI</span>:<span class="number">3.1415926535</span>,</span><br><span class="line">            <span class="attr">max</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> max = <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">1</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="built_in">arguments</span>[i]&gt;max)&#123;</span><br><span class="line">                        max = <span class="built_in">arguments</span>[i];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> max;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">min</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> min = <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">1</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="built_in">arguments</span>[i]&lt;min)&#123;</span><br><span class="line">                        min = <span class="built_in">arguments</span>[i];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> min;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="built_in">console</span>.log(obj.PI);</span><br><span class="line">        <span class="built_in">console</span>.log(obj.max(<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(obj.min(<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>));</span><br></pre></td></tr></table></figure></li>
+<li><p>三个取整方法</p>
+<ul>
+<li>Math.floor( )：向下取整</li>
+<li>Math.ceil( ):向上取整</li>
+<li>Math.round( ):四舍五入 里面的 .5 比较特殊，只往大了取</li>
+</ul>
+</li>
+<li><p>随机数方法 random( )</p>
+<ul>
+<li><p>随机数取值范围为[0,1)</p>
+</li>
+<li><p>这个方法里面不跟参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//案例：猜数字1-50,且只有十次机会</span></span><br><span class="line">        <span class="keyword">var</span> num = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (<span class="number">50</span> - <span class="number">1</span>)) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> add=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> num1=prompt(<span class="string">&#x27;你猜猜我是哪个数呀&#x27;</span>);</span><br><span class="line">        <span class="keyword">while</span>(num!=num1)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num&gt;num1)&#123;</span><br><span class="line">            num1=prompt(<span class="string">&#x27;你猜小啦，继续猜呀,还剩&#x27;</span>+(<span class="number">10</span>-add)+<span class="string">&quot;次机会哦&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;num1)&#123;</span><br><span class="line">            num1=prompt(<span class="string">&#x27;你猜大啦，继续猜呀，还剩&#x27;</span>+(<span class="number">10</span>-add)+<span class="string">&quot;次机会哦&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        add++;</span><br><span class="line">        <span class="keyword">if</span>(add&gt;<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(add&lt;=<span class="number">10</span>)&#123;</span><br><span class="line">        alert(<span class="string">&quot;你猜对啦！就是&quot;</span>+num+<span class="string">&quot;,恭喜你！&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        alert(<span class="string">&quot;你的机会用完啦&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>日期对象</p>
+<ul>
+<li><p>Date（）日期对象，是一个构造函数，必须要new来调用创建我们的日期对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用Date 如果没有参数，返回当前系统的当前时间</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="comment">//参数常用的写法：数字型 2021,6,13 或者是字符串型 &quot;2021-6-13 8:8:8&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>日期格式化(年月日)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//格式化日期 年月日</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">console</span>.log(date.getFullYear());</span><br><span class="line"><span class="built_in">console</span>.log(date.getMonth()+<span class="number">1</span>);<span class="comment">//返回的月份会小一个月，记得+1</span></span><br><span class="line"><span class="built_in">console</span>.log(date.getDay());<span class="comment">//返回的周日是0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//案例：</span></span><br><span class="line">        <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        <span class="keyword">var</span> year = date.getFullYear();</span><br><span class="line">        <span class="keyword">var</span> month = date.getMonth()+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> dates = date.getDate();</span><br><span class="line">        <span class="keyword">var</span> day = date.getDay();</span><br><span class="line">        <span class="keyword">var</span> arr = [<span class="string">&#x27;星期日&#x27;</span>,<span class="string">&#x27;星期一&#x27;</span>,<span class="string">&#x27;星期二&#x27;</span>,<span class="string">&#x27;星期三&#x27;</span>,<span class="string">&#x27;星期四&#x27;</span>,<span class="string">&#x27;星期五&#x27;</span>,<span class="string">&#x27;星期六&#x27;</span>];</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;今天是&quot;</span>+year+<span class="string">&quot;年&quot;</span>+month+<span class="string">&quot;月&quot;</span>+dates+<span class="string">&quot;日 &quot;</span>+arr[day]);</span><br></pre></td></tr></table></figure></li>
+<li><p>日期格式化(时分秒)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//格式化日期 时分秒</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getTimer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> h = date.getHours();</span><br><span class="line">        h = h&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + h : h;</span><br><span class="line">        <span class="keyword">var</span> m = date.getMinutes();</span><br><span class="line">        m = m&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + m : m;</span><br><span class="line">        <span class="keyword">var</span> s = date.getSeconds();</span><br><span class="line">        s = s&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + s : s;</span><br><span class="line">        <span class="keyword">return</span> h+<span class="string">&#x27;:&#x27;</span>+m+<span class="string">&#x27;:&#x27;</span>+s;</span><br><span class="line">        &#125;;</span><br><span class="line">        alert(getTimer());</span><br></pre></td></tr></table></figure></li>
+<li><p>获取日期的总毫秒形式(时间戳)</p>
+<ul>
+<li>不是当前时间的毫秒数，而是距离1970年1月1日过了多少毫秒</li>
+<li>通过ValueOf( )  | getTime() 获取</li>
+<li>简单的写法(最常用的写法)：var date = +new Date;</li>
+<li>H5新增方法：console.log( Date.now( ) );</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//案例：倒计时</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">核心算法：</span></span><br><span class="line"><span class="comment">1.输入的时间减去现在的时间，就是剩余时间</span></span><br><span class="line"><span class="comment">2.用时间戳来做</span></span><br><span class="line"><span class="comment">3.把剩余的时间总的毫秒数转换为天、时、分、秒</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">        <span class="keyword">var</span> hours = prompt(<span class="string">&quot;截止时间，时&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> min = prompt(<span class="string">&quot;截止时间，分&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> miao = prompt(<span class="string">&quot;截止时间,秒&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">        <span class="comment">// var bf=0;</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">countTime</span> (<span class="params">time</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> nowTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">            <span class="keyword">var</span> inputTime = +<span class="keyword">new</span> <span class="built_in">Date</span>(time);</span><br><span class="line">            <span class="keyword">var</span> timer = (inputTime - nowTime)/<span class="number">1000</span>;<span class="comment">//化为秒</span></span><br><span class="line">            <span class="comment">// bf = timer;</span></span><br><span class="line">            <span class="keyword">var</span> d = <span class="built_in">parseInt</span>(timer/<span class="number">60</span>/<span class="number">60</span>/<span class="number">24</span>);</span><br><span class="line">            d = d&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + d : d;</span><br><span class="line">            <span class="keyword">var</span> h = <span class="built_in">parseInt</span>(timer/<span class="number">60</span>/<span class="number">60</span>%<span class="number">24</span>);</span><br><span class="line">            h = h&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + h : h;</span><br><span class="line">            <span class="keyword">var</span> m = <span class="built_in">parseInt</span>(timer/<span class="number">60</span>%<span class="number">60</span>);</span><br><span class="line">            m = m&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + m : m;</span><br><span class="line">            <span class="keyword">var</span> s = <span class="built_in">parseInt</span>(timer%<span class="number">60</span>);</span><br><span class="line">            s = s&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + s : s;</span><br><span class="line">            <span class="keyword">return</span> d+<span class="string">&quot;天&quot;</span>+h+<span class="string">&quot;时&quot;</span>+m+<span class="string">&quot;分&quot;</span>+s+<span class="string">&quot;秒&quot;</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// while(true)&#123;</span></span><br><span class="line">        <span class="built_in">console</span>.log(countTime(<span class="string">&#x27;2021-6-13 &#x27;</span>+hours+<span class="string">&#x27;:&#x27;</span>+min+<span class="string">&#x27;:&#x27;</span>+miao));</span><br><span class="line">        <span class="comment">// if(bf==0)&#123;</span></span><br><span class="line">        <span class="comment">//     break;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>数组对象</p>
+<ul>
+<li><p>创建数组对象的两种方式</p>
+<ul>
+<li>字面量方式</li>
+<li>new Array（）</li>
+</ul>
+</li>
+<li><p>检测是否为数组的两种函数</p>
+<ul>
+<li>instanceof 运算符，他可以用来检测是否为数组</li>
+<li>Array.isArray(参数);H5新增的方法，IE9+以上支持</li>
+</ul>
+</li>
+<li><p>添加删除数组元素的方法</p>
+<ul>
+<li>push(参数1…..)：末尾添加一个或多个元素，会修改原数组，返回值是他的新长度</li>
+<li>pop()：删除数组最后一个元素，把数组长度减1，无参数，会修改原数组，返回值是它删除的元素的值</li>
+<li>unshift(参数1….)：向数组的开头添加一个或更多元素，会修改原数组，返回值是它的新长度</li>
+<li>shift()：删除数组的第一个元素，数组长度减1，无参数，会修改原数组，返回值是第一个元素的值</li>
+</ul>
+</li>
+<li><p>数组排序</p>
+<ul>
+<li><p>reverse（）：颠倒数组中元素的顺序，无参数，会改变原数组，返回新数组</p>
+</li>
+<li><p>sort（）：对数组的元素进行排序，该方法会改变原数组，返回新数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">使用sort（）发现，如果不是个位数，就会出错，所以要在里面定义一个函数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a-b;<span class="comment">//按照升序的顺序进行排列</span></span><br><span class="line">    <span class="keyword">return</span> b-a;<span class="comment">//按照降序的顺序进行排列</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>数组索引方法</p>
+<ul>
+<li>indexOf（）：数组中查找给定元素的第一个索引，如果存在返回索引号，如果不存在则返回-1<ul>
+<li>只返回第一个满足条件的索引号</li>
+</ul>
+</li>
+<li>lastindexOf（）：在数组中的最后一个索引，如果存在返回索引号，如果不存在，则返回-1<ul>
+<li>只返回第一个满足条件的索引号</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数组去重（重点案例）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">核心算法：遍历旧数组，拿着就数组遍历出来的元素去查询新数组，没有这个元素就添加到新数组里面去，有的话，就会返回-1，就不管它</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> newArr=[];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(newArr.indexOf(arr[i])==-<span class="number">1</span>)&#123;</span><br><span class="line">                    newArr.push(arr[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> newArr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> arr = [<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;z&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;b&#x27;</span>]</span><br><span class="line">        <span class="built_in">console</span>.log(unique(arr));</span><br></pre></td></tr></table></figure></li>
+<li><p>数组转换为字符串</p>
+<ul>
+<li>toString（）：把数组转换为字符串，逗号分隔每一项，返回值是一个字符串</li>
+<li>join（’分隔符’）：方法用于把数组中的所有元素转换为一个字符串，返回值是一个字符串，默认分隔符为逗号</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>字符串对象</p>
+<ul>
+<li><p>基本包装类型：就是把简单数据类型包装成了复杂数据类型，中间又发生了什么呢？</p>
+<ul>
+<li>var 临时变量 = new String(‘简单数据名’)</li>
+<li>再把临时变量的值 赋给简单数据名</li>
+<li>再讲临时变量销毁，临时变量=null；</li>
+</ul>
+</li>
+<li><p>字符串不可变性</p>
+<ul>
+<li>指的是，里面的值不可变，虽然看上去可以改变内容，但其实是地址变了，内存中开辟了一个新的内存空间，放后面赋的值</li>
+</ul>
+</li>
+<li><p>根据字符串返回位置</p>
+<ul>
+<li><p>字符串所有方法都不会修改字符串本身，操作完成会返回一个新的字符串</p>
+</li>
+<li><p>indexOf（”要查找的字符” , 开始的位置）：返回指定内容在元字符串中的位置，如果找不到就返回-1，开始的位置是index的索引号</p>
+</li>
+<li><p>lastIndexOf（）：从后往前找，只找第一个匹配的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//案例：返回字符的位置</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.核心算法：先查找一个o出现的位置</span></span><br><span class="line"><span class="comment">2.然后，只要indexOf返回的结果不是-1，就继续往后查找</span></span><br><span class="line"><span class="comment">3.因为indexOf只能查找第一个，所以后面的查找，利用第一个查到的索引+1，从而继续查找</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">        <span class="keyword">var</span> sy = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">var</span> sy1 = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">        <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">search</span>(<span class="params">zifu</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(zifu.indexOf(<span class="string">&#x27;o&#x27;</span>,sy)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                num++;</span><br><span class="line">                sy = zifu.indexOf(<span class="string">&#x27;o&#x27;</span>,sy)+<span class="number">1</span>;</span><br><span class="line">                sy1 +=(sy-<span class="number">1</span>).toString()+<span class="string">&#x27;,&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="string">&#x27;出现了&#x27;</span>+num+<span class="string">&#x27;次，分别在&#x27;</span>+sy1+<span class="string">&quot;个位置&quot;</span></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(search(<span class="string">&#x27;abcoefoxyozzopp&#x27;</span>));</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>根据位置返回字符（重点）</p>
+<ul>
+<li>charAt（index）：返回指定位置的字符（index：字符串的索引号）</li>
+<li>charCodeAt（index）：获取指定位置处字符的ASCLL码，目的：判断用户按下了哪个键</li>
+<li>str[index]：获取指定位置处字符，IE8+支持</li>
+</ul>
+</li>
+<li><p>案例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断一个字符串，出现最多次数的字符，并统计其次数</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">核心算法</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+<li><p>1</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/12/%E8%AF%B7%E5%81%87%E4%B8%80%E5%A4%A9/" rel="prev" title="请假一天">
+      <i class="fa fa-chevron-left"></i> 请假一天
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E5%9B%9B%E5%A4%A9"><span class="nav-number">1.</span> <span class="nav-text">稳固JS第四天</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.0.1.</span> <span class="nav-text">javascript对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Javascript%E7%9A%84%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.0.2.</span> <span class="nav-text">Javascript的内置对象</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rui576"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">rui576</p>
+  <div class="site-description" itemprop="description">个人学习记录博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/rui576" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;rui576" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2257293298@qq.com" title="E-Mail → mailto:2257293298@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rui576</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共34.7k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'scS2CX1PccjY1BjTuFQX3VrO-gzGzoHsz',
+      appKey     : 'EDtnhSK396wWDDsn5VioxJi5',
+      placeholder: "是否要评论什么~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
