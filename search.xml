@@ -3669,4 +3669,176 @@
         <category>JS</category>
       </categories>
   </entry>
+  <entry>
+    <title>稳固JS第八天</title>
+    <url>/2021/06/17/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E5%85%AB%E5%A4%A9/</url>
+    <content><![CDATA[<h1 id="稳固JS第八天"><a href="#稳固JS第八天" class="headerlink" title="稳固JS第八天"></a>稳固JS第八天</h1><ol>
+<li><h3 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h3><ol>
+<li><p>BOM概述</p>
+<ul>
+<li>浏览器对象模型（把浏览器当对象来看），它提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是window</li>
+<li>BOM缺乏标准（浏览器厂商在各自浏览器上定义的），会有很多兼容问题</li>
+<li>BOM比DOM更大，它包含DOM</li>
+<li>Window对象是浏览器的顶级对象，它具有双重角色<ol>
+<li>它是JS访问浏览器窗口的一个接口</li>
+<li>它是全局对象，定义在全局作用域中的变量、函数都会变成window对象的属性和方法</li>
+<li>Window下的一个特殊属性window.name</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>window对象的常见事件</p>
+<ul>
+<li><strong>window.onload = function() { }</strong> 或者 <strong>window.addEventListener(‘load’,function() { }</strong> );，当文档内容完全加载完成后会触发该事件，就调用处理函数<ul>
+<li>前面这个传统的方式，只能写一次，以最后的那个为准；后面监听器的新方式，就不会有这个问题</li>
+</ul>
+</li>
+<li>**document.addEventListener(‘DOMContenetLoaded’,function() { } );**，事件触发时，仅当DOM加载完成，不包括样式表、图片、falsh等，IE9+才支持<ul>
+<li>如果页面图片很多的话，从用户访问到onload触发可能需要比较长的时间，交互效果就不能实现，必然影响用户的体验，此时用DOMContentLoaded事件比较合适</li>
+</ul>
+</li>
+<li>调整窗口大小事件<ul>
+<li><strong>window.onresize</strong> 是调整窗口大小加载事件，当触发时就调用处理函数</li>
+<li>只要窗口大小发生像素变化，就会触发这个事件</li>
+<li>我们经常利用这个事件完成响应式布局。window.innerWidth 当前屏幕宽度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>定时器</p>
+<ul>
+<li><p>window对象给我们提供了两个定时器</p>
+<ol>
+<li><p><strong>setTimeout（）</strong>：</p>
+<ul>
+<li>window.setTimeout(调用函数,[,延迟的毫秒数])；延迟时间省略默认为0</li>
+<li>方法用于设置一个定时器，该定时器在定时器到期后执行调用函数</li>
+<li>调用函数可以直接写函数，还可以写函数名，还可以  ‘函数名（）’</li>
+<li>页面中可能有很多的定时器，应该给定时器加上标识符</li>
+<li>停止setTime（）定时器<ol>
+<li>*window.clearTimeout(timeout ID)*方法，取消了先前通过调用的setTimeout建立的定时器</li>
+<li>window可以省略</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>setInterval（）</strong>：</p>
+<ul>
+<li><p>window.setInterval(回调函数,[,间隔的毫秒数])；延迟时间省略默认为0</p>
+</li>
+<li><p>很多地方和setTimeout相似</p>
+</li>
+<li><p>方法重复调用一个函数，每隔这个时间，就去调用一次回调函数</p>
+</li>
+<li><p>案例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//倒计时</span></span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> hour = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.hour&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> minute = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.minute&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> second = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.second&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> year = prompt(<span class="string">&quot;截止时间，年&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> mouth = prompt(<span class="string">&quot;截止时间，月&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> day = prompt(<span class="string">&quot;截止时间,日&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> hours = prompt(<span class="string">&quot;截止时间，时&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> min = prompt(<span class="string">&quot;截止时间，分&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> miao = prompt(<span class="string">&quot;截止时间,秒&quot;</span>)*<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">var</span> time1 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> nowTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">            <span class="keyword">var</span> inputTime = +<span class="keyword">new</span> <span class="built_in">Date</span>(year+<span class="string">&#x27;-&#x27;</span>+mouth+<span class="string">&#x27;-&#x27;</span>+day+<span class="string">&#x27; &#x27;</span>+hours+<span class="string">&#x27;:&#x27;</span>+min+<span class="string">&#x27;:&#x27;</span>+miao);</span><br><span class="line">            <span class="keyword">var</span> timer = (inputTime - nowTime)/<span class="number">1000</span>;<span class="comment">//化为秒</span></span><br><span class="line">            <span class="comment">// var d = parseInt(timer/60/60/24);</span></span><br><span class="line">            <span class="comment">// d = d&lt;10?&#x27;0&#x27; + d : d;</span></span><br><span class="line">            <span class="keyword">var</span> h = <span class="built_in">parseInt</span>(timer/<span class="number">60</span>/<span class="number">60</span>%<span class="number">24</span>);</span><br><span class="line">            h = h&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + h : h;</span><br><span class="line">            hour.innerHTML = h;</span><br><span class="line">            <span class="keyword">var</span> m = <span class="built_in">parseInt</span>(timer/<span class="number">60</span>%<span class="number">60</span>);</span><br><span class="line">            m = m&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + m : m;</span><br><span class="line">            minute.innerHTML = m;</span><br><span class="line">            <span class="keyword">var</span> s = <span class="built_in">parseInt</span>(timer%<span class="number">60</span>);</span><br><span class="line">            s = s&lt;<span class="number">10</span>?<span class="string">&#x27;0&#x27;</span> + s : s;</span><br><span class="line">            second.innerHTML = s;</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>回调函数</p>
+<ul>
+<li>简单理解就是：上一件事干完，再回头调用这个函数</li>
+</ul>
+</li>
+<li><p>停止setInterval（）定时器</p>
+<ul>
+<li><p>window.clearInterval(intervalID);方法取消先前通过调用setInterval建立的定时器</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//案例：发送短信</span></span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> button = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line">            button.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> time1 = <span class="number">4</span>;</span><br><span class="line">                button.disabled = <span class="literal">true</span>;</span><br><span class="line">                button.innerHTML = <span class="string">&quot;再过5秒后可以发送&quot;</span><span class="comment">//这里先改变，可以提高用户体验</span></span><br><span class="line">                <span class="keyword">var</span> time = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                    button.innerHTML = <span class="string">&#x27;再过&#x27;</span>+time1+<span class="string">&quot;秒后可以发送&quot;</span></span><br><span class="line">                    <span class="keyword">if</span>(time1 &lt;<span class="number">0</span>)&#123;</span><br><span class="line">                        <span class="built_in">clearInterval</span>(time);</span><br><span class="line">                        button.innerHTML = <span class="string">&#x27;发送&#x27;</span>;</span><br><span class="line">                        button.disabled = <span class="literal">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    time1--;</span><br><span class="line">                &#125;,<span class="number">1000</span>)    </span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>this指向问题</p>
+<ol>
+<li>全局作用域或普通函数中this指向全局对象window（注意定时器里面的this，指向window）</li>
+<li>方法调用中，谁调用this就指向谁</li>
+<li>构造函数中this指向构造函数的实例</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>JS执行机制</p>
+<ul>
+<li>JS语言一大特点就是单线程，也就是说，同一时间只能做一件事情</li>
+<li>为了解决这个问题，利用多核CPU的计算能力，于是，JS中出现了同步和异步<ul>
+<li>同步任务：在主线程上执行，形成一个执行栈</li>
+<li>异步任务：JS的异步是通过回调函数实现的<ul>
+<li>一般而言异步任务有三种类型</li>
+<li>普通事件，如click、resize等</li>
+<li>资源加载：load、error等</li>
+<li>定时器：setInterval、setTimeout</li>
+</ul>
+</li>
+<li>异步任务相关回调函数添加到任务队列（消息队列）中</li>
+</ul>
+</li>
+<li>JS执行机制<ol>
+<li>先执行 执行栈中的同步任务</li>
+<li>异步任务放入任务队列中</li>
+<li>一旦执行栈中所有的同步任务执行完毕，系统就会按次序读取任务列表中的异步任务，于是被读取的异步任务结束等待状态，进入执行栈，开始执行</li>
+</ol>
+</li>
+<li>由于主线程不断地重复获得任务、执行任务、再获取任务、再执行、所以这种机制被称为事件循环</li>
+</ul>
+</li>
+<li><p>location对象</p>
+<ul>
+<li><p>window对象给我们提供了一个location属性用于获取或设置窗体的URL，并且可以用于解析URL，因为这个属性返回的是一个对象，所以我们将这个属性也称为location对象</p>
+</li>
+<li><p>location对象的属性：</p>
+<ul>
+<li>loaction.href：获取或设置 整个URL</li>
+<li>location.host：返回主机（域名）</li>
+<li>location.port：返回端口号</li>
+<li>location.pathname：返回路径</li>
+<li>location.search：返回参数</li>
+<li>loaction.hash：返回片段 #后面内容 常见于连接 锚点</li>
+</ul>
+</li>
+<li><p>案例：获取URL参数数据</p>
+</li>
+<li><pre><code class="js">    window.onload = function ()&#123;
+        var uname1 = location.search;
+        console.log(uname1);
+        var uname2 = uname1.substr(1);
+        console.log(uname2);
+        var uname3 = uname2.split(&#39;=&#39;);
+        console.log(uname3);
+        var div = document.querySelector(&#39;div&#39;);
+        div.innerHTML = uname3[1]+&#39;欢迎你&#39;
+    &#125;
+</code></pre>
+</li>
+<li><p>location对象的方法</p>
+<ul>
+<li>loaction.assign()：跟href一样，可以跳转页面（也成为重定向页面），记录历史，可以后退页面</li>
+<li>location.replace()：替换当前页面，因为不记录历史，不可以回退</li>
+<li>location.reload()：重新加载页面，相当于刷新按钮，如果参数为true，则为ctrl+F5强制刷新</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>navigation对象</p>
+<ul>
+<li>包含了有关浏览器的信息，里面有很多属性，我们最常用的是useAgent，该属性可以返回由客户机发送服务器的user-agent头部的值</li>
+</ul>
+</li>
+<li><p>history对象</p>
+<ul>
+<li>window对象给我们提供了一个history对象，与浏览器历史记录进行交互。该对象包含用户（在浏览器窗口中）访问过的URL</li>
+<li>对象方法：<ul>
+<li>back（）：后退功能</li>
+<li>forward（）：前进功能</li>
+<li>go（参数）：前进后退功能，参数n为前进n个，-n为后退n个页面</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+  </entry>
 </search>
