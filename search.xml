@@ -4020,4 +4020,67 @@
         <tag>轮播图</tag>
       </tags>
   </entry>
+  <entry>
+    <title>稳固JS第十天</title>
+    <url>/2021/06/23/%E7%A8%B3%E5%9B%BAJS%E7%AC%AC%E5%8D%81%E5%A4%A9-1/</url>
+    <content><![CDATA[<h1 id="稳固JS第十天"><a href="#稳固JS第十天" class="headerlink" title="稳固JS第十天"></a>稳固JS第十天</h1><ol>
+<li><p>本地存储</p>
+<span id="more"></span>
+
+<ol>
+<li>本地存储特性<ul>
+<li>数据存储在用户浏览器中</li>
+<li>设置、读取方便、甚至页面刷新不丢失数据</li>
+<li>容量较大，sessionStorage约5M，localStorage约为20M</li>
+<li>只能存储字符串，可以将对象JSON.stringify()编码后存储</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>window.sessionStorage</p>
+<ul>
+<li><p>生命周期为关闭浏览器窗口</p>
+</li>
+<li><p>在同一个窗口（页面）下数据可以共享</p>
+</li>
+<li><p>以键值对的形式存储使用</p>
+<ul>
+<li><p>存储数据：sessionStorage.setItem(key,value)</p>
+</li>
+<li><p>获取数据：sessionStorage.getItem(key)</p>
+</li>
+<li><p>删除数据：sessionStorage.removeItem(key)</p>
+</li>
+<li><p>删除所有数据：sessionStorage.clear()</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试案例</span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;input&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> ipt = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;ipt&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> btn1 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn1&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> btn2 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn2&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> btn3 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn3&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> btn4 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;btn4&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> div = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">            btn1.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> val = input.value;</span><br><span class="line">                <span class="keyword">var</span> key = ipt.value;</span><br><span class="line">                sessionStorage.setItem(key,val);</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            btn2.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> key = ipt.value;</span><br><span class="line">                <span class="keyword">var</span> val = sessionStorage.getItem(key);</span><br><span class="line">                <span class="keyword">if</span>(val == <span class="literal">null</span>)&#123;</span><br><span class="line">                    div.innerHTML = <span class="string">&#x27;本地存储没有找到这个玩意&#x27;</span></span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    div.innerHTML = val;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            btn3.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> key = ipt.value;</span><br><span class="line">                sessionStorage.removeItem(key);</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            btn4.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                sessionStorage.clear();</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>window.localStorage</p>
+<ul>
+<li><p>生命周期永久生效，除非手动删除，否则关闭页面也会存在</p>
+</li>
+<li><p>可以多窗口（页面）共享（同一浏览器共享）</p>
+</li>
+<li><p>以键值对的形式存储使用</p>
+<ul>
+<li>存储数据：localStorage.setItem(key,value)</li>
+<li>获取数据：localStorage.getItem(key)</li>
+<li>删除数据：localStorage.removeItem(key)<ul>
+<li>删除所有数据：localStorage.clear()</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//案例，保存账号</span></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;input&#x27;</span>);</span><br><span class="line">            <span class="keyword">var</span> ipt = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;ipt&#x27;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;username&#x27;</span>)!=<span class="literal">null</span>)&#123;</span><br><span class="line">                input.value = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;username&#x27;</span>);</span><br><span class="line">                ipt.checked = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ipt.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(ipt.checked)&#123;</span><br><span class="line">                    <span class="keyword">var</span> val = input.value;</span><br><span class="line">                    <span class="built_in">console</span>.log(val);</span><br><span class="line">                    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;username&#x27;</span>,val);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">localStorage</span>.removeItem(<span class="string">&#x27;username&#x27;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+  </entry>
 </search>
